@@ -1,0 +1,36 @@
+
+<div>
+  </div><div class="col article-border">
+    <div class="row m-3 align-items-center">
+        <div class="col-md-8 p-0">
+            <h1>Liste des clients</h1>
+        </div>
+        <div class="col-md-4 text-right">
+            <!-- Ajoutez des boutons ou des actions ici -->
+             <app-action-button (clickEvent)="goToNouveauClient()"></app-action-button>
+        </div>
+    </div>
+
+    <!-- Inclusion du fichier details-articles.html -->
+    <div class="row">
+        <div class="col-md-12">
+            <app-details-clients></app-details-clients>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <app-details-clients></app-details-clients>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <app-details-clients></app-details-clients>
+        </div>
+    </div>
+    
+    <div class="row mt-3">
+        <div class="col text-center">
+            <app-pagination></app-pagination>
+        </div>
+    </div>
+</div>

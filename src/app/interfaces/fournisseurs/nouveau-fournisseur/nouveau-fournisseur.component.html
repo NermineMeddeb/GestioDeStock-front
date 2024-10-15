@@ -1,0 +1,59 @@
+<div class="col mb-3">
+  <div class="col-md-12 mb-3 mt-3">
+    <button style="background-color: transparent; border: none;">
+      <img src="assets/utilisateur.png" class="rounded-circle" width="200px" height="200px" />
+    </button>
+  </div>
+  <hr>
+  <div class="col-md-12">
+    <div class="col-md-12 mb-3">
+      <h2><img src="assets/user-info.png" width="50px" height="50px" />
+          &nbsp;Information du fournisseur</h2>
+    </div>
+    <div class="col-md-12">
+      <div class="alert alert-danger">
+        <span>Erreur à afficher selon le formulaire</span>
+      </div>
+      <form>
+        <div class="row mb-3">
+          <div class="col">
+            <input type="text" class="form-control" name="nom" placeholder="Nom" >
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" name="prenom" placeholder="Prénom">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <input type="text" class="form-control" name="E-mail" placeholder="E-mail">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" name="telephone" placeholder="Numéro de Téléphone">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <input type="text" class="form-control" name="Adresse1" placeholder="Adresse1">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" name="Adresse2" placeholder="Adresse2">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" name="ville" placeholder="Ville">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" name="codePostal" placeholder="Code postal">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-12 text-right">
+    <button class="btn btn-outline-danger" (click)="cancel()">
+      <i class="fas fa-ban"></i>&nbsp; Annuler
+    </button>
+    <button class="btn btn-outline-info">
+      <i class="fas fa-save"></i>&nbsp; Enregistrer
+    </button>
+  </div>
+</div>

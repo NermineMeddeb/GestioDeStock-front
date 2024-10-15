@@ -1,0 +1,34 @@
+.article-border {
+    border: 1px solid #010101;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .custom-border-right {
+    border-right: 1px solid #e0e0e0;
+  }
+  
+  .fa-info {
+    font-size: 20px;
+    color: #cc0c0c;
+    margin-right: 10px;
+  }
+  
+  .row {
+    align-items: center;
+  }
+  
+  img {
+    border-radius: 50%;
+  }
+  
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .text-right {
+    text-align: right;
+  }
+  

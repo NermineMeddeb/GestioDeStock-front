@@ -1,0 +1,42 @@
+<!-- Section principale : Commande clients / fournisseurs -->
+<div class="col">
+    <div class="row m-3">
+      <div class="col-md-8 p-0">
+        <h1>Commande fournisseurs</h1>
+      </div>
+      <div class="col-md-4 text-right">
+        <app-action-button (clickEvent)="goToNouvelleCommande()"
+        [isImporterVisible]="false"></app-action-button>
+      </div>
+    </div>
+    
+    <div class="col m-3">
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <app-details-commande-client-fournisseur></app-details-commande-client-fournisseur>
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body" style="max-height: 300px; overflow-y: scroll;">
+              <!-- Détails de la commande -->
+              <app-details-commande></app-details-commande>
+              <app-details-commande></app-details-commande>
+              <app-details-commande></app-details-commande>
+              <app-details-commande></app-details-commande>
+              <app-details-commande></app-details-commande>
+              <app-details-commande></app-details-commande>
+            </div>
+            <div class="accordion-footer card-footer" style="background-color: rgb(207, 202, 202);">
+              <div class="row">
+                <div class="col-md-6 text-left"><h5>120 Articles Commandés</h5></div>
+                <div class="col-md-6 text-left"><h5>Total commande : 123</h5></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

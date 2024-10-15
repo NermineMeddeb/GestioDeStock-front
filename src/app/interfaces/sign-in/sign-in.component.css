@@ -1,0 +1,43 @@
+/* Applique une marge supérieure de 100px et limite la largeur maximale du conteneur à 600px */
+.my-container {
+    margin-top: 100px;
+    max-width: 600px;
+}
+
+/* Ajoute un rayon de bordure de 10px aux coins de la carte pour les arrondir */
+.card {
+    border-radius: 10px;
+}
+
+/* Ajoute une bordure inférieure à l'en-tête de la carte pour créer une séparation visuelle */
+.card-header {
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Rend le texte des étiquettes (labels) en gras pour une meilleure lisibilité */
+.form-label {
+    font-weight: bold;
+}
+
+/* Style appliqué à un champ de formulaire lorsqu'il est en focus 
+   Change la couleur de la bordure et ajoute une ombre autour du champ */
+.form-control:focus {
+    border-color: #007bff; /* Couleur de bordure bleue lors du focus */
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25); /* Ombre autour du champ */
+}
+
+/* Style des liens boutons (btn-link), ici avec une couleur bleue par défaut */
+.btn-link {
+    color: #007bff;
+}
+
+/* Change la couleur du lien bouton lorsqu'on passe la souris dessus */
+.btn-link:hover {
+    color: #0056b3;
+}
+
+/* Applique un rayon de bordure de 5px aux boutons de type "primary" 
+   pour les rendre légèrement arrondis */
+.btn-primary {
+    border-radius: 5px;
+}

@@ -1,0 +1,29 @@
+<div class="container my-container">
+  <div class="card shadow-lg">
+    <div class="card-header text-center bg-primary text-white">
+      <h3>Se connecter</h3>
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="E-mail" required >
+          <div class="invalid-feedback">
+            Veuillez entrer une adresse e-mail valide.
+          </div>
+        </div>
+        <div class="mb-3">
+          <input type="password" class="form-control" placeholder="Mot de passe" required>
+          <div class="invalid-feedback">
+            Veuillez entrer votre mot de passe.
+          </div>
+        </div>
+        <div class="mb-3 d-flex justify-content-between align-items-center">
+          <a [routerLink]="['/sign-in']" class="btn btn-link">S'inscrire</a>
+          <button type="submit" class="btn btn-info">
+            <i class="fas fa-sign-in-alt"></i> Se connecter
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

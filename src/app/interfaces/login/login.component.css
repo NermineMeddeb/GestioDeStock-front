@@ -1,0 +1,47 @@
+.my-container {
+  margin-top: 100px;
+  max-width: 400px;
+}
+
+.card {
+  border-radius: 8px;
+  border: none;
+}
+
+.card-header {
+  border-radius: 8px 8px 0 0;
+}
+
+.form-control:focus {
+  border-color: #17a2b8;
+  box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.25);
+}
+
+.btn-info {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-info:hover {
+  background-color: #138496;
+  transform: translateY(-2px);
+}
+
+.btn-link {
+  color: #17a2b8;
+  transition: color 0.3s;
+}
+
+.btn-link:hover {
+  color: #138496;
+  text-decoration: none;
+}
+
+.invalid-feedback {
+  display: none;
+}
+
+input:invalid + .invalid-feedback {
+  display: block;
+}

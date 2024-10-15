@@ -1,0 +1,69 @@
+<div class="col mb-3">
+    <div class="col-md-12 mb-3 mt-3">
+      <button  style="background-color: transparent; border: none;">
+        <img src="assets/utilisateur.png" class="rounded-circle" width="200px" height="200px" />
+      </button>
+    </div>
+    <hr>
+    <div class="col-md-12">
+      <div class="col-md-12 mb-3">
+        <h2><img src="assets/user-info.png" width="50px" height="50px" />
+            &nbsp;Information de l'article</h2>
+      </div>
+      <div class="col-md-12">
+        <div class="alert alert-danger" >
+          <div >
+            <span >blaset el eureurs eli mech traj3ha el formulaire</span>
+          </div>
+        </div>
+        <form>
+          <div class="row mb-3">
+            <div class="col">
+              <input type="text" class="form-control" name="codearticle" placeholder="Code article" >
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" name="designation" placeholder="Designation"  >
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <input type="text" class="form-control" name="prixunitht" placeholder="Prix unitaire HT"
+                    
+                    >
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" name="tauxtva" placeholder="Taux TVA"
+                     >
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <input type="text" class="form-control" name="prixunitttc" placeholder="Prix unitaire TTC"  >
+            </div>
+            <div class="col">
+              <select class="form-control" name="cat" >
+                <option [value]="null">Selectionner une categorie</option>
+                <option  >choix 1</option>
+                <option  >choix 2</option>
+                <option  >choix 3
+                </option>
+
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-12 text-right">
+        <button class="btn btn-outline-danger " (click)="cancel()">
+          <i class="fas fa-ban"></i>&nbsp;
+          Annuler
+        </button>   
+        <button class="btn btn-outline-info">
+          <i class="fas fa-save"></i>&nbsp;
+          Enregistrer
+        </button>
+      </div>
+      
+  
+  </div>

@@ -1,0 +1,107 @@
+<!-- Conteneur principal avec une classe personnalisée pour l'espacement et la largeur -->
+<div class="container my-container">
+    <!-- Carte avec une ombre pour un effet de profondeur -->
+    <div class="card shadow-lg">
+        <!-- En-tête de la carte avec un texte centré, une couleur de fond et un texte en blanc -->
+        <div class="card-header text-center bg-primary text-white">
+            <h3>S'inscrire</h3> <!-- Titre du formulaire d'inscription -->
+        </div>
+        <!-- Corps de la carte contenant le formulaire -->
+        <div class="card-body">
+            <!-- Début du formulaire d'inscription -->
+            <form>
+                <!-- Champ de saisie pour le nom avec une étiquette (label) et une validation -->
+                <div class="mb-3">
+                    <label for="nom" class="form-label">Nom</label> <!-- Label pour le champ nom -->
+                    <input type="text" id="nom" class="form-control" placeholder="Votre nom" required> <!-- Champ texte pour le nom -->
+                    <div class="invalid-feedback">
+                        Veuillez entrer votre nom. <!-- Message d'erreur si le champ est vide -->
+                    </div>
+                </div>
+                
+                <!-- Champ de saisie pour le code fiscal -->
+                <div class="mb-3">
+                    <label for="codeFiscal" class="form-label">Code fiscal</label> <!-- Label pour le code fiscal -->
+                    <input type="text" id="codeFiscal" class="form-control" placeholder="Votre code fiscal" required> <!-- Champ texte pour le code fiscal -->
+                    <div class="invalid-feedback">
+                        Veuillez entrer votre code fiscal. <!-- Message d'erreur si le champ est vide -->
+                    </div>
+                </div>
+
+                <!-- Champ de saisie pour l'email -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label> <!-- Label pour l'e-mail -->
+                    <input type="email" id="email" class="form-control" placeholder="Votre e-mail" required> <!-- Champ texte pour l'e-mail avec validation -->
+                    <div class="invalid-feedback">
+                        Veuillez entrer une adresse e-mail valide. <!-- Message d'erreur si l'e-mail est invalide -->
+                    </div>
+                </div>
+
+                <!-- Champ de saisie pour l'adresse 1 -->
+                <div class="mb-3">
+                    <label for="adresse1" class="form-label">Adresse 1</label> <!-- Label pour l'adresse -->
+                    <input type="text" id="adresse1" class="form-control" placeholder="Votre adresse" required> <!-- Champ texte pour l'adresse 1 -->
+                    <div class="invalid-feedback">
+                        Veuillez entrer votre adresse. <!-- Message d'erreur si le champ est vide -->
+                    </div>
+                </div>
+
+                <!-- Champ de saisie pour l'adresse 2, champ optionnel -->
+                <div class="mb-3">
+                    <label for="adresse2" class="form-label">Adresse 2</label> <!-- Label pour l'adresse 2 -->
+                    <input type="text" id="adresse2" class="form-control" placeholder="Adresse complémentaire"> <!-- Champ texte pour l'adresse 2 -->
+                </div>
+
+                <!-- Champ de saisie pour la ville -->
+                <div class="mb-3">
+                    <label for="ville" class="form-label">Ville</label> <!-- Label pour la ville -->
+                    <input type="text" id="ville" class="form-control" placeholder="Votre ville" required> <!-- Champ texte pour la ville -->
+                    <div class="invalid-feedback">
+                        Veuillez entrer votre ville. <!-- Message d'erreur si le champ est vide -->
+                    </div>
+                </div>
+
+                <!-- Champ de saisie pour le code postal -->
+                <div class="mb-3">
+                    <label for="codePostal" class="form-label">Code postal</label> <!-- Label pour le code postal -->
+                    <input type="text" id="codePostal" class="form-control" placeholder="Votre code postal" required> <!-- Champ texte pour le code postal -->
+                    <div class="invalid-feedback">
+                        Veuillez entrer votre code postal. <!-- Message d'erreur si le champ est vide -->
+                    </div>
+                </div>
+
+                <!-- Champ de saisie pour le pays -->
+                <div class="mb-3">
+                    <label for="pays" class="form-label">Pays</label> <!-- Label pour le pays -->
+                    <input type="text" id="pays" class="form-control" placeholder="Votre pays" required> <!-- Champ texte pour le pays -->
+                    <div class="invalid-feedback">
+                        Veuillez entrer votre pays. <!-- Message d'erreur si le champ est vide -->
+                    </div>
+                </div>
+
+                <!-- Champ textarea pour une description supplémentaire -->
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label> <!-- Label pour la description -->
+                    <textarea id="description" class="form-control" placeholder="Description" rows="3"></textarea> <!-- Champ textarea pour la description -->
+                </div>
+
+                <!-- Champ de saisie pour le numéro de téléphone avec validation du format -->
+                <div class="mb-3">
+                    <label for="telephone" class="form-label">Numéro de téléphone</label> <!-- Label pour le numéro de téléphone -->
+                    <input type="tel" id="telephone" class="form-control" placeholder="Votre numéro de téléphone" pattern="[0-9]{10}" required> <!-- Champ texte pour le téléphone avec validation de format -->
+                    <div class="invalid-feedback">
+                        Veuillez entrer un numéro de téléphone valide. <!-- Message d'erreur si le format est incorrect -->
+                    </div>
+                </div>
+
+                <!-- Section des boutons : lien vers la connexion et bouton de soumission du formulaire -->
+                <div class="d-flex justify-content-between align-items-center">
+                    <a  class="btn btn-link">J'ai deja un compte</a> <!-- Lien vers la page de connexion -->
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-check"></i>&nbsp;S'inscrire <!-- Bouton de soumission du formulaire avec une icône -->
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
