@@ -68,10 +68,10 @@ class ApiService extends __BaseService {
   static readonly sortieStockPath = '/gestiondestock/v1/mvtstk/sortie';
   static readonly findAll_categoriesPath = 'gestiondestock/v1/categories/all';
   static readonly savecategoriesPath = 'gestiondestock/v1/categories/create';
-  static readonly delete_1Path = 'gestiondestock/v1/categories/delete/{idCategory}';
+  static readonly delete_catPath = 'gestiondestock/v1/categories/delete/{idCategory}';
   static readonly findByCodePath = 'gestiondestock/v1/categories/filter/{codeCategory}';
   static readonly findById_1Path = 'gestiondestock/v1/categories/{idCategory}';
-  static readonly findAll_3Path = 'gestiondestock/v1/clients/gestiondestock/v1/clients/all';
+  static readonly findAll_clientPath = 'gestiondestock/v1/clients/all';
   static readonly save_2Path = 'gestiondestock/v1/clients/gestiondestock/v1/clients/create';
   static readonly delete_2Path = 'gestiondestock/v1/clients/gestiondestock/v1/clients/delete/{idClient}';
   static readonly findById_2Path = 'gestiondestock/v1/clients/gestiondestock/v1/clients/{idClient}';
@@ -119,10 +119,15 @@ class ApiService extends __BaseService {
   /**
    * @return successful operation
    */
-  saveArticleResponse(): __Observable<__StrictHttpResponse<ArticleDto>> {
+  saveArticleResponse(ArticleDto:any): __Observable<__StrictHttpResponse<ArticleDto>> {
     let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
+    //@nermine
+    let __headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    let __body: any = ArticleDto;
+    console.log('Corps de la requête :', __body); // Log des données envoyées
+
+//
+
     let req = new HttpRequest<any>(
       'POST',
       this.rootUrl + `/gestiondestock/v1/articles/create`,
@@ -143,14 +148,15 @@ class ApiService extends __BaseService {
   /**
    * @return successful operation
    */
-  saveArticle(): __Observable<ArticleDto> {
-    return this.saveArticleResponse().pipe(
+  saveArticle(ArticleDto:any): __Observable<ArticleDto> {
+    console.log("hii")
+    return this.saveArticleResponse(ArticleDto).pipe(
       __map(_r => _r.body as ArticleDto)
-    );
+    );console.log("ahla")
   }
   deleteArticleResponse(idArticle:any): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
-    let __headers = new HttpHeaders();
+    let __headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     let __body: any = null;
     let req = new HttpRequest<any>(
       'DELETE',
@@ -410,7 +416,7 @@ class ApiService extends __BaseService {
    */
   saveCommandeClientResponse(): __Observable<__StrictHttpResponse<CommandeClientDto>> {
     let __params = this.newParams();
-    let __headers = new HttpHeaders();
+    let __headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     let __body: any = null;
     let req = new HttpRequest<any>(
       'POST',
@@ -765,7 +771,7 @@ class ApiService extends __BaseService {
    */
   saveCommandeFournisseurResponse(): __Observable<__StrictHttpResponse<CommandeFournisseurDto>> {
     let __params = this.newParams();
-    let __headers = new HttpHeaders();
+    let __headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     let __body: any = null;
     let req = new HttpRequest<any>(
       'POST',
@@ -1120,7 +1126,7 @@ class ApiService extends __BaseService {
    */
   saveEntrepriseResponse(): __Observable<__StrictHttpResponse<EntrepriseDto>> {
     let __params = this.newParams();
-    let __headers = new HttpHeaders();
+    let __headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     let __body: any = null;
     let req = new HttpRequest<any>(
       'POST',
@@ -1244,7 +1250,7 @@ class ApiService extends __BaseService {
    */
   saveResponse(): __Observable<__StrictHttpResponse<FournisseurDto>> {
     let __params = this.newParams();
-    let __headers = new HttpHeaders();
+    let __headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     let __body: any = null;
     let req = new HttpRequest<any>(
       'POST',
@@ -1335,7 +1341,7 @@ class ApiService extends __BaseService {
    */
   correctionStockNegResponse(): __Observable<__StrictHttpResponse<MvtStkDto>> {
     let __params = this.newParams();
-    let __headers = new HttpHeaders();
+    let __headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     let __body: any = null;
     let req = new HttpRequest<any>(
       'POST',
@@ -1368,7 +1374,7 @@ class ApiService extends __BaseService {
    */
   correctionStockPosResponse(): __Observable<__StrictHttpResponse<MvtStkDto>> {
     let __params = this.newParams();
-    let __headers = new HttpHeaders();
+    let __headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     let __body: any = null;
     let req = new HttpRequest<any>(
       'POST',
@@ -1401,7 +1407,7 @@ class ApiService extends __BaseService {
    */
   entreeStockResponse(): __Observable<__StrictHttpResponse<MvtStkDto>> {
     let __params = this.newParams();
-    let __headers = new HttpHeaders();
+    let __headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     let __body: any = null;
     let req = new HttpRequest<any>(
       'POST',
@@ -1467,7 +1473,7 @@ class ApiService extends __BaseService {
    */
   sortieStockResponse(): __Observable<__StrictHttpResponse<MvtStkDto>> {
     let __params = this.newParams();
-    let __headers = new HttpHeaders();
+    let __headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     let __body: any = null;
     let req = new HttpRequest<any>(
       'POST',
@@ -1500,11 +1506,15 @@ class ApiService extends __BaseService {
    */
   findAll_categoriesResponse(): __Observable<__StrictHttpResponse<Array<CategoryDto>>> {
     let __params = this.newParams();
-    let __headers = new HttpHeaders();
+    let __headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     let __body: any = null;
+    console.log("heni fel find all")
+    console.log(`URL de la requête: ${this.rootUrl}gestiondestock/v1/categories/all`)
+
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `gestiondestock/v1/categories/all`,
+      this.rootUrl + '/gestiondestock/v1/categories/all',
+
       __body,
       {
         headers: __headers,
@@ -1534,12 +1544,12 @@ class ApiService extends __BaseService {
    */
   savecategoriesResponse(body?: CategoryDto): __Observable<__StrictHttpResponse<CategoryDto>> {
     let __params = this.newParams();
-    let __headers = new HttpHeaders();
+    let __headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     let __body: any = null;
     __body = body;
     let req = new HttpRequest<any>(
       'POST',
-      this.rootUrl + `gestiondestock/v1/categories/create`,
+      this.rootUrl + `/gestiondestock/v1/categories/create`,
       __body,
       {
         headers: __headers,
@@ -1567,14 +1577,15 @@ class ApiService extends __BaseService {
   /**
    * @param idCategory undefined
    */
-  delete_1Response(idCategory: number): __Observable<__StrictHttpResponse<null>> {
+  delete_catResponse(idCategory: number): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
+    console.log("heni fel delite")
 
     let req = new HttpRequest<any>(
       'DELETE',
-      this.rootUrl + `gestiondestock/v1/categories/delete/${encodeURIComponent(String(idCategory))}`,
+      this.rootUrl + `/gestiondestock/v1/categories/delete/${encodeURIComponent(String(idCategory))}`,
       __body,
       {
         headers: __headers,
@@ -1592,8 +1603,8 @@ class ApiService extends __BaseService {
   /**
    * @param idCategory undefined
    */
-  delete_1(idCategory: number): __Observable<null> {
-    return this.delete_1Response(idCategory).pipe(
+  delete_cat(idCategory: number): __Observable<null> {
+    return this.delete_catResponse(idCategory).pipe(
       __map(_r => _r.body as null)
     );
   }
@@ -1607,7 +1618,7 @@ class ApiService extends __BaseService {
     let __body: any = null;
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `gestiondestock/v1/categories/filter/${encodeURIComponent(String(codeCategory))}`,
+      this.rootUrl + `/gestiondestock/v1/categories/filter/${encodeURIComponent(String(codeCategory))}`,
       __body,
       {
         headers: __headers,
@@ -1642,7 +1653,7 @@ class ApiService extends __BaseService {
 
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `gestiondestock/v1/categories/${encodeURIComponent(String(idCategory))}`,
+      this.rootUrl + `/gestiondestock/v1/categories/${encodeURIComponent(String(idCategory))}`,
       __body,
       {
         headers: __headers,
@@ -1670,13 +1681,13 @@ class ApiService extends __BaseService {
   /**
    * @return successful operation
    */
-  findAll_3Response(): __Observable<__StrictHttpResponse<Array<ClientDto>>> {
+  findAll_clientResponse(): __Observable<__StrictHttpResponse<Array<ClientDto>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `gestiondestock/v1/clients/gestiondestock/v1/clients/all`,
+      this.rootUrl + `/gestiondestock/v1/clients/all`,
       __body,
       {
         headers: __headers,
@@ -1694,8 +1705,8 @@ class ApiService extends __BaseService {
   /**
    * @return successful operation
    */
-  findAll_3(): __Observable<Array<ClientDto>> {
-    return this.findAll_3Response().pipe(
+  findAll_client(): __Observable<Array<ClientDto>> {
+    return this.findAll_clientResponse().pipe(
       __map(_r => _r.body as Array<ClientDto>)
     );
   }
@@ -1706,7 +1717,7 @@ class ApiService extends __BaseService {
    */
   save_2Response(body?: ClientDto): __Observable<__StrictHttpResponse<ClientDto>> {
     let __params = this.newParams();
-    let __headers = new HttpHeaders();
+    let __headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     let __body: any = null;
     __body = body;
     let req = new HttpRequest<any>(

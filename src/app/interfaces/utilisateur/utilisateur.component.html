@@ -9,14 +9,8 @@
         ></app-action-button>
       </div>
     </div>
-    <div class="col m-3">
-      <app-detail-utilisateur></app-detail-utilisateur>
-      <app-detail-utilisateur></app-detail-utilisateur>
-      <app-detail-utilisateur></app-detail-utilisateur>
-      <app-detail-utilisateur></app-detail-utilisateur>
-      <app-detail-utilisateur></app-detail-utilisateur>
-      <app-detail-utilisateur></app-detail-utilisateur>
-      <app-detail-utilisateur></app-detail-utilisateur>
+    <div class="col m-3" *ngFor="let item of UtilisateurDto">
+      <app-detail-utilisateur [UtilisateurDto]="item"></app-detail-utilisateur>
     </div>
     <div class="row mb-3">
       <div class=" col-md-12 text-center">

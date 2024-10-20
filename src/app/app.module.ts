@@ -37,9 +37,10 @@ import { NouveauClientComponent } from './interfaces/clients/nouveau-client/nouv
 import { VueDEnsembleComponent } from './interfaces/vue-d-ensemble/vue-d-ensemble.component';
 import { DetailUtilisateurComponent } from './composants/detail-utilisateur/detail-utilisateur.component';
 import { UtilisateurComponent } from './interfaces/utilisateur/utilisateur.component';
-import { HttpClientModule } from '@angular/common/http';
-import { IntercepteurComponent } from './Services/intercepteur/intercepteur.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { DeatilsCommandeClientComponent } from './composants/deatils-commande-client/deatils-commande-client.component';
+
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { FormsModule } from '@angular/forms';
    DetailUtilisateurComponent,
    
     UtilisateurComponent,
-        IntercepteurComponent,
+        DeatilsCommandeClientComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -90,7 +92,6 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [],  bootstrap: [AppComponent]
 })
 export class AppModule { }

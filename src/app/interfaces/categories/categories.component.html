@@ -50,6 +50,7 @@
 </div>
 
 <!-- Modal -->
+<!-- Modal -->
 <div class="modal fade" id="modalDeleteCat" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -63,13 +64,14 @@
         Êtes-vous sûr de vouloir supprimer cette catégorie ?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="annulerSuppressionCat()">
           <i class="fas fa-ban"></i>&nbsp;Annuler
         </button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">
+        <button type="button" class="btn btn-danger" (click)="confirmerEtSupprimerCat()">
           <i class="fas fa-trash-alt"></i>&nbsp;Supprimer
         </button>
       </div>
     </div>
   </div>
 </div>
+

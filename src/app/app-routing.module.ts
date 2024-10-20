@@ -34,7 +34,9 @@ const routes: Routes = [
     children: [
       { path: 'statistiques', component: StatistiquesComponent },
       { path: 'articles', component: ArticlesComponent },
-      { path: 'nouveau-article', component: NouveauArticleComponent },
+      { path: 'nouveau-article', component: NouveauArticleComponent },///////////
+      { path: 'nouveau-article/:id', component: NouveauArticleComponent },
+
       { path: 'mouvement-de-stock', component: MouvementDeStockComponent },
       { path: 'clients', component: ClientsComponent },
       { path: 'nouveau-client', component: NouveauClientComponent },

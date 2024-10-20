@@ -10,8 +10,8 @@ import { ApiService } from '../../../gs-api/src/services/api.service';
 })
 export class CategoriesComponent implements OnInit {
   listCategories: Array<CategoryDto> = [];
-  selectedCatIdToDelete ? = -1;
-  errorMsgs = '';
+  selectedCatIdToDelete: number | null = null;
+    errorMsgs = '';
   constructor(
     private router: Router,
     private categoryService: ApiService
@@ -21,7 +21,7 @@ export class CategoriesComponent implements OnInit {
 
   }
   findAllCategories(): void {
-    this.categoryService.findAll()
+    this.categoryService.findAll_categories()
     .subscribe(res => {
       this.listCategories = res;
     });
@@ -40,11 +40,14 @@ export class CategoriesComponent implements OnInit {
   }
 
   confirmerEtSupprimerCat(): void {
-    if (this.selectedCatIdToDelete !== -1) {
-      this.categoryService.delete(this.selectedCatIdToDelete)
+    console.log("Suppression de la catégorie ID :", this.selectedCatIdToDelete);
+    if (this.selectedCatIdToDelete !== null) {
+      this.categoryService.delete_cat(this.selectedCatIdToDelete)
       .subscribe(res => {
+        console.log("Catégorie supprimée avec succès :", res);
         this.findAllCategories();
       }, error => {
+        console.error("Erreur lors de la suppression :", error);
         this.errorMsgs = error.error.message;
       });
     }
@@ -55,6 +58,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   selectCatPourSupprimer(id?: number): void {
-    this.selectedCatIdToDelete = id;
+    console.log("Catégorie sélectionnée pour suppression :", id);
+    this.selectedCatIdToDelete = id ?? null;
   }
 }

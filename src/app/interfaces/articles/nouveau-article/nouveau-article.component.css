@@ -1,0 +1,70 @@
+/* Style pour le conteneur principal */
+.col {
+    margin-bottom: 1.5rem; /* Espacement entre les colonnes */
+  }
+  
+  /* Style pour le bouton d'image */
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer; /* Changer le curseur en main lors du survol */
+  }
+  
+  /* Style pour l'image de profil */
+  .rounded-circle {
+    transition: transform 0.3s; /* Animation de transformation */
+  }
+  
+  .rounded-circle:hover {
+    transform: scale(1.05); /* Légère augmentation de la taille au survol */
+  }
+  
+  /* Style pour le titre de la section */
+  h2 {
+    display: flex;
+    align-items: center; /* Alignement vertical centré */
+    font-size: 1.5rem; /* Taille de police */
+    color: #333; /* Couleur du texte */
+  }
+  
+  /* Style pour l'alerte d'erreur */
+  .alert {
+    margin-top: 1rem; /* Espacement au-dessus de l'alerte */
+    border-radius: 0.5rem; /* Coins arrondis */
+  }
+  
+  /* Style pour les formulaires */
+  .form-control {
+    border-radius: 0.5rem; /* Coins arrondis pour les champs de formulaire */
+    padding: 0.75rem; /* Espacement intérieur */
+  }
+  
+  /* Style pour le bouton d'annulation et d'enregistrement */
+  .btn {
+    border-radius: 0.5rem; /* Coins arrondis */
+    padding: 0.5rem 1rem; /* Espacement intérieur */
+    margin-left: 0.5rem; /* Espacement entre les boutons */
+  }
+  
+  /* Style pour le bouton d'annulation */
+  .btn-outline-danger {
+    color: #dc3545; /* Couleur du texte */
+    border-color: #dc3545; /* Couleur de la bordure */
+  }
+  
+  .btn-outline-danger:hover {
+    background-color: #dc3545; /* Couleur de fond au survol */
+    color: white; /* Couleur du texte au survol */
+  }
+  
+  /* Style pour le bouton d'enregistrement */
+  .btn-outline-info {
+    color: #17a2b8; /* Couleur du texte */
+    border-color: #17a2b8; /* Couleur de la bordure */
+  }
+  
+  .btn-outline-info:hover {
+    background-color: #17a2b8; /* Couleur de fond au survol */
+    color: white; /* Couleur du texte au survol */
+  }
+  

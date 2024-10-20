@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ApiService } from 'src/gs-api/src/services';
+import { UtilisateurDto } from '../../../gs-api/src/models/utilisateur-dto';
+
 
 @Component({
   selector: 'app-detail-utilisateur',
@@ -6,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detail-utilisateur.component.css']
 })
 export class DetailUtilisateurComponent implements OnInit {
+  @Input() UtilisateurDto!: UtilisateurDto;
 
   constructor() { }
 

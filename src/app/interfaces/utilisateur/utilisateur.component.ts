@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UtilisateurDto} from "../../../gs-api/src/models/utilisateur-dto";
+import {UtilisateursService} from "../../../gs-api/src/services/UtilisateurService";
 
 @Component({
   selector: 'app-utilisateur',
@@ -8,10 +10,22 @@ import {Router} from '@angular/router';
 })
 export class UtilisateurComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  UtilisateurDto: UtilisateurDto[]=[];
+
+  constructor(private service: UtilisateursService, private route: ActivatedRoute,private router: Router) { }
+
   ngOnInit(): void {
+    this.service.findAll().subscribe(
+      data => {
+        this.UtilisateurDto = data;
+        console.log('Données récupérées:', this.UtilisateurDto);
+      },
+      error => console.error('Erreur lors de la récupération des détails de l\'article', error)
+    );
   }
   nouvelleUtilisateur(): void {
-    this.router.navigate(['/dashbord/nouvelleUtilisateur']);
+    this.router.navigate(['/dashbord/nouveau-utilisateur']);
   }
+
 }
+

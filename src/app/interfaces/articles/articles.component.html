@@ -12,24 +12,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <app-details-article></app-details-article>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <app-details-article></app-details-article>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <app-details-article></app-details-article>
-        </div>
-    </div>
-    <div class="row mt-3">
-        <div class="col text-center">
-            <app-pagination></app-pagination>
+        <div class="col-md-12" *ngFor="let item of articleDto">
+            <app-details-article [articleDto]="item"></app-details-article>
         </div>
     </div>
   </div>
-  

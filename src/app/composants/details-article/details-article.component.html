@@ -1,83 +1,89 @@
 <div class="card mb-3">
-    <div class="row g-0">
-      <!-- Image du produit -->
-      <div class="col-md-2 text-center p-3">
-        <img src="assets/produit.png" class="img-fluid rounded-start" alt="Produit" style="width: 100px; height: 100px;">
-      </div>
-  
-      <!-- Informations de l'article -->
-      <div class="col-md-3 d-flex align-items-center border-end">
-        <div class="card-body">
-          
-            
-          
-          <h6 class="card-title">
-            <i><img src="assets/info.gif" alt="titre du produit" style="width: 30px; height:30px;">
+  <div class="row g-0">
+    <!-- Image du produit -->
+    <div class="col-md-2 text-center p-3">
+      <img src="assets/produit.png" class="img-fluid rounded-start" alt="Produit" style="width: 100px; height: 100px;">
+    </div>
+
+    <!-- Informations de l'article -->
+    <div class="col-md-3 d-flex align-items-center border-end">
+      <div class="card-body">
+
+        <h6 class="card-title">
+          <i><img src="assets/info.gif" alt="titre du produit" style="width: 30px; height:30px;">
           </i> Titre de l'article
-          </h6>
-          <p class="card-text">
-            <b><i>
-              <img src="assets/article-description.gif" alt="Code du produit" style="width: 30px; height:30px;">
-              Code de l'article: {{ data.id }}
-            </i></b>
-          </p>
-          <p class="card-text">
-            <b><i>
-              <img src="assets/article-description.gif" alt="Désignation du produit" style="width: 30px; height:30px;">
-              Désignation:<li *ngFor="let item of data">{{ item.designation}}</li>
-            </i></b>
-          </p>
-          <p class="card-text">
-            <b><i>
-              <img src="assets/hors-taxe.gif" alt="Prix HT" style="width: 20px; height:20px;">
-              Prix HT:<li *ngFor="let item of data">{{ item.prixunitaireht}}</li>
-            </i></b>
-          </p>
-          <p class="card-text">
-            <b><i>
-              <img src="assets/etiquette-de-prix.png" alt="Prix TTC" style="width: 20px; height:20px;">
-              Prix TTC:<li *ngFor="let item of data">{{ item.prixunitairettc}}</li>
-            </i></b>
-          </p>
+        </h6>
+        <p class="card-text">
+          <b><i>
+            <img src="assets/article-description.gif" alt="Code du produit" style="width: 30px; height:30px;">
+            Code de l'article: {{ articleDto.id }}
+          </i></b>
+        </p>
+        <p class="card-text">
+          <b><i>
+            <img src="assets/article-description.gif" alt="Désignation du produit" style="width: 30px; height:30px;">
+            Désignation:{{ articleDto.designation }}
+          </i></b>
+        </p>
+        <p class="card-text">
+          <b><i>
+            <img src="assets/hors-taxe.gif" alt="Prix HT" style="width: 20px; height:20px;">
+            Prix HT:{{ articleDto.prixUnitaireHt }}
+          </i></b>
+        </p>
+        <p class="card-text">
+          <b><i>
+            <img src="assets/etiquette-de-prix.png" alt="Prix TTC" style="width: 20px; height:20px;">
+            Prix TTC:{{ articleDto.prixUnitaireTtc }}
+          </i></b>
+        </p>
+      </div>
+    </div>
+
+
+    <!-- Informations sur la catégorie -->
+    <div class="col-md-4 d-flex align-items-center">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2">
+            <i class="fas fa-flag-checkered blue-color"></i>
+          </div>
+          <div class="col-md-10">
+            <div class="row">
+              <div class="col-md-12"><b><i>Code catégorie:{{ articleDto.category?.code }}</i></b></div>
+              <div class="col-md-12"><b><i>Catégorie désignation:{{ articleDto.category?.designation }}</i></b></div>
+
+            </div>
+          </div>
         </div>
       </div>
-        
-  
-      <!-- Informations sur la catégorie -->
-      <div class="col-md-4 d-flex align-items-center">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-2">
-              <i class="fas fa-flag-checkered blue-color"></i>
-            </div>
-            <div class="col-md-10">
-              <div class="row">
-                <div class="col-md-12">Code catégorie:</div>
-                <div class="col-md-12">Catégorie désignation:</div>
-              </div>
-            </div>
-          </div>
+    </div>
+
+    <!-- Actions (Modifier, Supprimer, Détails) -->
+    <div class="col-md-3 d-flex align-items-center justify-content-end">
+      <div class="row w-100">
+        <div class="col-md-4 text-center">
+          <button type="button" class="btn btn-outline-info" (click)="modifierArticle()">
+            <i class="fas fa-pencil-alt"></i>&nbsp;Modifier
+          </button>
+        </div>
+        <div class="col-md-4 text-center">
+          <button type="button" class="btn btn-outline-danger" (click)="confirmerEtSupprimerArticle()">
+            <i class="fas fa-trash-alt"></i>&nbsp;Supprimer
+        </button>
+        </div>
+        <div class="col-md-4 text-center">
+          <button type="button" class="btn btn-outline-warning">
+            <i class="far fa-list-alt"></i>&nbsp;Détails
+
+
+          </button>
         </div>
       </div>
-  
-      <!-- Actions (Modifier, Supprimer, Détails) -->
-      <div class="col-md-3 d-flex align-items-center justify-content-end">
-        <div class="row w-100">
-          <div class="col-md-4 text-center">
-            <button type="button" class="btn btn-outline-info">
-              <i class="fas fa-pencil-alt"></i>&nbsp;Modifier
-            </button>
-          </div>
-          <div class="col-md-4 text-center">
-            <button type="button" class="btn btn-outline-danger">
-              <i class="fas fa-trash-alt"></i>&nbsp;Supprimer
-            </button>
-          </div>
-          <div class="col-md-4 text-center">
-            <button type="button" class="btn btn-outline-warning">
-              <i class="far fa-list-alt"></i>&nbsp;Détails
-              
-              
-              
-              
-              
+    </div>
+  </div>
+</div>
+
+
+
+

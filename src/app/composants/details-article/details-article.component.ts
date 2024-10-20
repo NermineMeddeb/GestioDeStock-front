@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/gs-api/src/services';
 import { ArticleDto } from '../../../gs-api/src/models/article-dto';
 
@@ -8,24 +9,40 @@ import { ArticleDto } from '../../../gs-api/src/models/article-dto';
   templateUrl: './details-article.component.html',
   styleUrls: ['./details-article.component.css']
 })
-export class DetailsArticleComponent implements OnInit {
-  articleDto: ArticleDto | null = null;
+export class DetailsArticleComponent {
+  @Input() articleDto!: ArticleDto;
+  @Output()
+  suppressionResult = new EventEmitter();
 
-  constructor(private service: ApiService, private route: ActivatedRoute) { }
+  constructor(
+    private router: Router,
+    private articleService: ApiService
+  ) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    console.log('ID de l\'article:', id);
-    if (id) {
-      this.service.findByIdArticle(id).subscribe(
-        data => {
-          this.articleDto = data;
-          console.log('Données récupérées:', this.articleDto);
-        },
-        error => console.error('Erreur lors de la récupération des détails de l\'article', error)
-      );
-    } else {
-      console.error('Aucun ID trouvé dans l\'URL');
+  }
+
+  modifierArticle(): void {
+    this.router.navigate(['/dashbord/nouveau-article', this.articleDto.id]);
+  }
+  
+
+  confirmerEtSupprimerArticle(): void {
+    console.log('Tentative de suppression de l\'article avec ID :', this.articleDto.id);
+    if (this.articleDto.id) {
+      this.articleService.deleteArticle(this.articleDto.id)
+        .subscribe({
+          next: (res) => {
+            console.log('Suppression réussie');
+            this.suppressionResult.emit('success');
+          },
+          error: (error) => {
+            console.error('Erreur lors de la suppression de l\'article:', error);
+            this.suppressionResult.emit(error.error?.error || 'Erreur inconnue');
+          }
+        });
     }
   }
+  
+  
 }
