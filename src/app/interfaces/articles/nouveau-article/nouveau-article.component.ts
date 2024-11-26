@@ -1,76 +1,101 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { error } from 'ng-packagr/lib/util/log';
 import { ArticleDto, CategoryDto } from 'src/gs-api/src/models';
 import { ApiService } from 'src/gs-api/src/services';
+import { PhotosService } from 'src/gs-api/src/services/photoService';
+import SavePhotoParams = PhotosService.SavePhotoParams;
 
 @Component({
-  selector: 'app-nouveau-article', // Le sélecteur du composant, utilisé dans le HTML
-  templateUrl: './nouveau-article.component.html', // Chemin vers le template HTML du composant
-  styleUrls: ['./nouveau-article.component.css'] // Chemin vers le fichier CSS du composant
+  selector: 'app-nouveau-article',
+  templateUrl: './nouveau-article.component.html',
+  styleUrls: ['./nouveau-article.component.css']
 })
 export class NouveauArticleComponent implements OnInit {
   articleDto: ArticleDto = {}; // Objet pour stocker les informations de l'article
-  categorieDto: CategoryDto = {}; // Objet pour stocker les informations de la catégorie
   listeCategorie: Array<CategoryDto> = []; // Liste pour stocker toutes les catégories
   errorMsg: Array<string> = []; // Liste pour stocker les messages d'erreur
+  file: File | null = null;
+  imgUrl: string | ArrayBuffer = 'assets/produit.png';
 
   constructor(
-    private router: Router, // Service pour naviguer entre les routes
-    private activatedRoute: ActivatedRoute, // Service pour accéder aux paramètres de la route
-    private articleService: ApiService, // Service pour interagir avec les articles
-    private categoryService: ApiService // Service pour interagir avec les catégories
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private articleService: ApiService,
+    private categoryService: ApiService,
+    private photoService: PhotosService
   ) { }
 
   ngOnInit(): void {
-    // Récupération de toutes les catégories au démarrage du composant
-    this.categoryService.findAll()
-      .subscribe(categories => {
-        this.listeCategorie = categories; // Stockage des catégories récupérées
-      });
+    // Charger toutes les catégories
+    this.categoryService.findAll().subscribe(categories => {
+      this.listeCategorie = categories;
+    });
 
-    // Récupération de l'ID de l'article depuis les paramètres de la route
+    // Récupérer l'ID de l'article pour le mode édition
     const idArticle = this.activatedRoute.snapshot.params['idArticle'];
     if (idArticle) {
-      // Si un ID d'article est fourni, on cherche les détails de cet article
-      this.articleService.findByIdArticle(idArticle)
-        .subscribe(article => {
-          this.articleDto = article; // Stockage des détails de l'article récupéré
-          // Si l'article a une catégorie, on la stocke aussi
-          this.categorieDto = this.articleDto.category ? this.articleDto.category : {};
-        });
+      this.articleService.findByIdArticle(idArticle).subscribe(article => {
+        this.articleDto = article;
+        // Charger l'image de l'article s'il y en a une
+        this.imgUrl = article.photo ? `assets/${article.photo}` : 'assets/produit.png';
+      });
     }
   }
 
-  // Méthode pour annuler l'opération et revenir à la liste des articles
   cancel(): void {
     this.router.navigate(['/dashbord/articles']);
   }
+
   enregistrerArticle(): void {
-    console.log(this.articleDto)
-    this.articleService.saveArticle(this.articleDto)
-      .subscribe(
-        response => {
-          // Redirection ou affichage d'un message de succès
-          this.router.navigate(['/dashbord/articles']);
-        },
-        error => {
-          // Vérification de l'objet d'erreur avant d'accéder à `errors`
-          if (error && error.error && error.error.messages) {
-            this.errorMsg = error.error.messages;
-          } else {
-            this.errorMsg = ["Une erreur est survenue lors de l'enregistrement."];
-          }
+    this.articleService.saveArticle(this.articleDto).subscribe(
+      response => {
+        this.router.navigate(['/dashbord/articles']);
+      },
+      error => {
+        if (error && error.error && error.error.messages) {
+          this.errorMsg = error.error.messages;
+        } else {
+          this.errorMsg = ["Une erreur est survenue lors de l'enregistrement."];
         }
-      );
+      }
+    );
   }
+
   calculerTTC(): void {
     if (this.articleDto.prixUnitaireHt && this.articleDto.tauxTva) {
-      //la formule de calculle de TTC= prixHT + (prixHT * (tauxTVA / 100))
-      //on ajouter des + pour le consommer en nummber puisque blech bihom yefhmou chaine
       this.articleDto.prixUnitaireTtc =
         +this.articleDto.prixUnitaireHt + (+(this.articleDto.prixUnitaireHt * (this.articleDto.tauxTva / 100)));
     }
   }
 
+  onFileInput(files: FileList | null): void {
+    if (files) {
+      this.file = files.item(0);
+      if (this.file) {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(this.file);
+        fileReader.onload = () => {
+          if (fileReader.result) {
+            this.imgUrl = fileReader.result;
+          }
+        };
+      }
+    }
+  }
+
+  savePhoto(idArticle?: number, titre?: string): void {
+    if (idArticle && titre && this.file) {
+      const params: SavePhotoParams = {
+        id: idArticle,
+        file: this.file,
+        title: titre,
+        context: 'article'
+      };
+      this.photoService.savePhoto(params).subscribe(res => {
+        this.router.navigate(['articles']);
+      });
+    } else {
+      this.router.navigate(['articles']);
+    }
+  }
 }

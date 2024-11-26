@@ -19,7 +19,6 @@ import { DetailsClientsComponent } from './composants/details-clients/details-cl
 import { ClientsComponent } from './interfaces/clients/clients.component';
 import { FournisseursComponent } from './interfaces/fournisseurs/fournisseurs.component';
 import { DetailsFournisseursComponent } from './composants/details-fournisseurs/details-fournisseurs.component';
-import { NouveauClientFournisseurComponent } from './composants/nouveau-client-fournisseur/nouveau-client-fournisseur.component';
 import { NouveauFournisseurComponent } from './interfaces/fournisseurs/nouveau-fournisseur/nouveau-fournisseur.component';
 import { DetailsCommandeClientFournisseurComponent } from './composants/details-commande-client-fournisseur/details-commande-client-fournisseur.component';
 import { CommandeClientComponent } from './interfaces/commande-client/commande-client.component';
@@ -35,12 +34,17 @@ import { NouvelleCommandeClientComponent } from './interfaces/commande-client/no
 import { NouvelleCommandeFournisseurComponent } from './interfaces/commande-fournisseur/nouvelle-commande-fournisseur/nouvelle-commande-fournisseur.component';
 import { NouveauClientComponent } from './interfaces/clients/nouveau-client/nouveau-client.component';
 import { VueDEnsembleComponent } from './interfaces/vue-d-ensemble/vue-d-ensemble.component';
-import { DetailUtilisateurComponent } from './composants/detail-utilisateur/detail-utilisateur.component';
 import { UtilisateurComponent } from './interfaces/utilisateur/utilisateur.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DeatilsCommandeClientComponent } from './composants/deatils-commande-client/deatils-commande-client.component';
-
+import { LoaderComponent } from './composants/loader/loader.component';
+import { LoaderService } from './composants/loader/service/loader.service';
+import { DetailsSupplimentaireClientComponent } from './interfaces/clients/details-supplimentaire-client/details-supplimentaire-client.component';
+import { DetailsSupplimentaireFournisseurComponent } from './interfaces/fournisseurs/details-supplimentaire-fournisseur/details-supplimentaire-fournisseur.component';
+import { NouveauUtilisateurComponent } from './interfaces/utilisateur/nouveau-utilisateur/nouveau-utilisateur.component';
+import { DetailsSupplimentaireUtilisateurComponent } from './interfaces/utilisateur/details-supplimentaire-utilisateur/details-supplimentaire-utilisateur.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -62,7 +66,7 @@ import { DeatilsCommandeClientComponent } from './composants/deatils-commande-cl
     ClientsComponent,
     FournisseursComponent,
     DetailsFournisseursComponent,
-    NouveauClientFournisseurComponent,
+    
     NouveauFournisseurComponent,
     DetailsCommandeClientFournisseurComponent,
     CommandeClientComponent,
@@ -71,7 +75,7 @@ import { DeatilsCommandeClientComponent } from './composants/deatils-commande-cl
     DetailsMouvementDeStockArticleComponent,
     CategoriesComponent,
    NouvelleCategorieComponent,
-    DetailsUtilisateurComponent,
+   DetailsUtilisateurComponent,
    ProfilComponent,
    ChangerLePwdComponent,
    CommandeFournisseurComponent,
@@ -80,18 +84,26 @@ import { DeatilsCommandeClientComponent } from './composants/deatils-commande-cl
    NouvelleCommandeFournisseurComponent,
    NouveauClientComponent,
    VueDEnsembleComponent,
-   DetailUtilisateurComponent,
    
     UtilisateurComponent,
-        DeatilsCommandeClientComponent,
+    DeatilsCommandeClientComponent,
+    LoaderComponent,
+    DetailsSupplimentaireClientComponent,
+    DetailsSupplimentaireFournisseurComponent,
+    NouveauUtilisateurComponent,
+    DetailsSupplimentaireUtilisateurComponent,
     
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxChartsModule,
+
   ],
-  providers: [],  bootstrap: [AppComponent]
+  providers: [    LoaderService,
+  ],  bootstrap: [AppComponent]
 })
 export class AppModule { }

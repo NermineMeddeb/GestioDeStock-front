@@ -1,77 +1,91 @@
-<div class="col mb-3"></div>
-
-<!-- Image utilisateur -->
-<div class="col-md-12 text-center mb-3 mt-3">
-  <button style="background-color: transparent; border: none;">
-    <img src="assets/utilisateur.png" class="rounded-circle" width="200px" height="200px" alt="Photo de profil utilisateur" />
-  </button>
-</div>
-
-<hr>
-
-<!-- Informations du client/fournisseur -->
-<div class="col-md-12">
-  <div class="col-md-12 mb-3">
-    <h2>
-      <img src="assets/user-info.png" width="50px" height="50px" alt="Icone utilisateur" />
-      &nbsp;Information du client
-    </h2>
+<div class="container">
+  <div class="row justify-content-center mb-3">
+    <div class="col-md-12 text-center">
+      <button (click)="fileInput.click()" style="background-color: transparent; border: none;">
+        <img [src]="imgUrl" class="rounded-circle" width="200px" height="200px" alt="Image du client" />
+        <input hidden type="file" #fileInput (change)="onFileInput(fileInput.files)">
+      </button>
+    </div>
   </div>
 
   <!-- Section d'alerte pour les erreurs -->
   <div class="col-md-12">
-    <div class="alert alert-danger">
-      <div>
-        <span>Veuillez corriger les erreurs avant de soumettre le formulaire.</span>
-      </div>
+    <div class="alert alert-danger" *ngIf="errorMsg.length > 0">
+      <ul>
+        <li *ngFor="let msg of errorMsg">{{ msg }}</li>
+      </ul>
     </div>
 
     <!-- Formulaire -->
     <form>
       <div class="row mb-3">
-        <div class="col">
-          <input type="text" class="form-control" name="nom" placeholder="Nom" aria-label="Nom du client" required>
+        <div class="col-md-6">
+          <input type="text" class="form-control" name="nom" placeholder="Nom" aria-label="Nom du client" required [(ngModel)]="clientdto.nom">
         </div>
-        <div class="col">
-          <input type="text" class="form-control" name="prenom" placeholder="Prénom" aria-label="Prénom du client" required>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col">
-          <input type="email" class="form-control" name="email" placeholder="E-mail" aria-label="Adresse e-mail du client" required>
-        </div>
-        <div class="col">
-          <input type="tel" class="form-control" name="telephone" placeholder="Numéro de téléphone" aria-label="Numéro de téléphone du client" required>
+        <div class="col-md-6">
+          <input type="text" class="form-control" name="prenom" placeholder="Prénom" aria-label="Prénom du client" required [(ngModel)]="clientdto.prenom">
         </div>
       </div>
 
       <div class="row mb-3">
-        <div class="col">
-          <input type="text" class="form-control" name="adresse1" placeholder="Adresse 1" aria-label="Adresse 1 du client" required>
+        <div class="col-md-6">
+          <input type="email" class="form-control" name="email" placeholder="E-mail" aria-label="Adresse e-mail du client" required [(ngModel)]="clientdto.mail">
         </div>
-        <div class="col">
-          <input type="text" class="form-control" name="adresse2" placeholder="Adresse 2" aria-label="Adresse 2 du client">
+        <div class="col-md-6">
+          <input type="tel" class="form-control" name="telephone" placeholder="Numéro de téléphone" aria-label="Numéro de téléphone du client" required [(ngModel)]="clientdto.numTel">
         </div>
-        <div class="col">
-          <input type="text" class="form-control" name="ville" placeholder="Ville" aria-label="Ville du client" required>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <input type="text" class="form-control" name="adresse1" placeholder="Adresse 1" aria-label="Adresse 1 du client" required [(ngModel)]="adresseDto.adresse1">
         </div>
-        <div class="col">
-          <input type="text" class="form-control" name="code_postale" placeholder="Code postal" aria-label="Code postal du client" required>
+        <div class="col-md-6">
+          <input type="text" class="form-control" name="adresse2" placeholder="Adresse 2" aria-label="Adresse 2 du client" [(ngModel)]="adresseDto.adresse2">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <input type="text" class="form-control" name="ville" placeholder="Ville" aria-label="Ville du client" required [(ngModel)]="adresseDto.ville">
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" name="code_postale" placeholder="Code postal" aria-label="Code postal du client" required [(ngModel)]="adresseDto.codePostale">
         </div>
       </div>
     </form>
   </div>
-</div>
 
-<!-- Boutons d'action -->
-<div class="col-md-12 text-right mt-4">
-  <button class="btn btn-outline-danger mr-2" (click)="cancel()">
-    <i class="fas fa-ban"></i>&nbsp;
-    Annuler
-  </button>
-  <button class="btn btn-outline-info">
-    <i class="fas fa-save"></i>&nbsp;
-    Enregistrer
-  </button>
+  <!-- Boutons d'action -->
+  <div class="col-md-12 text-right mt-4">
+    <button class="btn btn-outline-danger mr-2" (click)="cancelClick()">
+      <i class="fas fa-ban"></i>&nbsp;
+      Annuler
+    </button>
+    <button class="btn btn-outline-info" (click)="enregistrer()">
+      <i class="fas fa-save"></i>&nbsp;
+      Enregistrer
+    </button>
+  </div>
+
+  <!-- Modal de confirmation -->
+  <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmModalLabel">Confirmer l'enregistrement</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Êtes-vous sûr de vouloir enregistrer ces informations ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-primary" (click)="confirmerEnregistrement()" data-dismiss="modal">Confirmer</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

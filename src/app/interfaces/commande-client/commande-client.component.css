@@ -1,0 +1,75 @@
+/* Commande Client Styles */
+
+/* Style pour le titre */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #0056b3;
+    margin-bottom: 20px;
+  }
+  
+  /* Accordéon */
+  .accordion-button {
+    background-color: #faf9f8;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  .accordion-button:hover {
+    background-color: #e2e6ea;
+  }
+  
+  .accordion-body {
+    background-color: #f1f3f5;
+    padding: 20px;
+    border: 1px solid #d3d3d3;
+  }
+  
+  /* Cartes */
+  .card-body {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(36, 31, 31, 0.1);
+    padding: 15px;
+    margin-bottom: 10px;
+  }
+  
+  /* Footer de l'accordéon */
+  .accordion-footer {
+    background-color: #cfcaca;
+    padding: 10px;
+  }
+  
+  /* Textes */
+  h5 {
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  /* Boutons */
+  button.btn-outline-danger {
+    color: #ec0505;
+    text-decoration: none;
+  }
+   /* Boutons */
+   button.btn-outline-info {
+    color: #ec0505;
+    text-decoration: none;
+  }
+  button.btn-outline-danger:hover {
+    text-decoration: underline;
+    color: #e6bd1c;
+  }
+  
+  /* Pagination */
+  .pagination {
+    margin: 20px 0;
+  }
+  
+  .col-md-12.text-center {
+    margin-bottom: 20px;
+  }
+  

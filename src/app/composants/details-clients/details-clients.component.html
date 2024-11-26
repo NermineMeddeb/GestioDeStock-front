@@ -1,7 +1,8 @@
 <div class="row mb-1 mr-0 custom-border">
   <div class="col-md-1 custom-border-right p-1 text-center mb-1 mt-1 ">
-<img src="./assets/clients.png" width="100px" height="100px">
-  </div>  
+    <img [src]="ClientDto.photo ? 'assets/' + ClientDto.photo : 'assets/produit.png'" class="rounded img-fluid" alt="Photo ClientDto">
+
+  </div >
 
   <!--  Détails clients-->
   <div class="col-md-5 custom-border-right mb-1 mt-1 ">
@@ -42,17 +43,17 @@
   <div class="col-md-3 mb-1 mt-1 ">
     <div class="row">
       <div class="col-md-4">
-        <button type="button" class="btn btn-link" >
+        <button type="button" class="btn btn-link"(click)="modifierClient()" >
           <i class="fas fa-pencil-alt"></i>&nbsp;Modifier
         </button>
       </div>
       <div class="col-md-4">
-        <button type="button" class="btn btn-link text-danger" data-toggle="modal" data-target="#modalDelete">
+        <button type="button" class="btn btn-link text-danger" data-toggle="modal" data-target="#modalDelete" (click)="confirmerEtSupprimerClient()">
           <i class="fas fa-trash-alt"></i>&nbsp;Supprimer
         </button>
       </div>
       <div class="col-md-4">
-        <button type="button" class="btn btn-link " >
+        <button type="button" class="btn btn-link " (click)="AfficherDetailsSupplimentaire()" >
           <i class="far fa-list-alt"></i>&nbsp;Détails
         </button>
       </div>

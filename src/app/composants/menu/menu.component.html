@@ -1,27 +1,30 @@
-<div class="accordion" id="appMenuAccordion">
-  <div class="card border-0 mb-2 shadow-sm" *ngFor="let menu of menuProperties">
-    <div class="card-header p-0" id="menu{{menu.id}}">
-      <h2 class="mb-0">
-        <button class="btn btn-block text-left collapsed custom-btn" type="button" data-bs-toggle="collapse"
-                [attr.data-bs-target]="'#collapse' + menu.id" aria-expanded="false" 
-                [attr.aria-controls]="'collapse' + menu.id">
-          <i class="{{menu.icon}}"></i>&nbsp;
-          {{menu.titre}}
-        </button>
-      </h2>
-    </div>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <img src="assets/logo.png" alt="MTS Plus Logo" class="sidebar-logo">
+    <h2 class="sidebar-title">MTS Plus</h2>
+  </div>
 
-    <div id="collapse{{menu.id}}" class="collapse" [attr.aria-labelledby]="'menu' + menu.id" data-bs-parent="#appMenuAccordion">
-      <div class="card-body p-0">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item list-group-item-action" *ngFor="let sousMenu of menu.sousMenu">
-            <a href="javascript:void(0);" class="custom-link" (click)="navigate(sousMenu)">
-              <i class="{{sousMenu.icon}}"></i>&nbsp;
-              {{sousMenu.titre}}
+  <ul class="sidebar-menu">
+    <li *ngFor="let menu of menuProperties" class="menu-item">
+      <button 
+        class="menu-btn" 
+        type="button" 
+        data-bs-toggle="collapse" 
+        [attr.data-bs-target]="'#collapse' + menu.id" 
+        aria-expanded="false" 
+        [attr.aria-controls]="'collapse' + menu.id">
+        <i class="{{menu.icon}}"></i>&nbsp; {{menu.titre}}
+      </button>
+      <div id="collapse{{menu.id}}" class="collapse submenu">
+        <ul>
+          <li *ngFor="let sousMenu of menu.sousMenu">
+            <a href="javascript:void(0);" class="submenu-link" (click)="navigate(sousMenu)">
+              <i class="{{sousMenu.icon}}"></i>&nbsp; {{sousMenu.titre}}
             </a>
           </li>
         </ul>
       </div>
-    </div>
-  </div>
+    </li>
+  </ul>
 </div>
+

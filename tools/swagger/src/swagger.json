@@ -706,7 +706,7 @@
         }
       }
     },
-    "gestiondestock/v1/clients/gestiondestock/v1/clients/all" : {
+    "gestiondestock/v1/clients/all" : {
       "get" : {
         "operationId" : "findAll",
         "produces" : [ "application/json" ],
@@ -723,7 +723,7 @@
         }
       }
     },
-    "gestiondestock/v1/clients/gestiondestock/v1/clients/create" : {
+    "gestiondestock/v1/clients/create" : {
       "post" : {
         "operationId" : "save",
         "consumes" : [ "application/json" ],
@@ -746,7 +746,7 @@
         }
       }
     },
-    "gestiondestock/v1/clients/gestiondestock/v1/clients/delete/{idClient}" : {
+    "gestiondestock/v1/clients/delete/{idClient}" : {
       "delete" : {
         "operationId" : "delete",
         "parameters" : [ {
@@ -763,7 +763,7 @@
         }
       }
     },
-    "gestiondestock/v1/clients/gestiondestock/v1/clients/{idClient}" : {
+    "gestiondestock/v1/clients/{idClient}" : {
       "get" : {
         "operationId" : "findById",
         "produces" : [ "application/json" ],

@@ -15,19 +15,16 @@
     <!-- Inclusion du fichier details-articles.html -->
     <div class="row">
         <div class="col-md-12">
-            <app-details-fournisseurs></app-details-fournisseurs>
-        </div>
+            <div class="alert alert-danger" *ngIf="errorMsg">
+                {{ errorMsg }}
+              </div>
+              <app-details-fournisseurs 
+              *ngFor="let FournisseurDto of listFournisseur" 
+              [FournisseurDto]="FournisseurDto" 
+              (suppressionResult)="handleSuppression($event)">
+            </app-details-fournisseurs>        </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <app-details-fournisseurs></app-details-fournisseurs>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <app-details-fournisseurs></app-details-fournisseurs>
-        </div>
-    </div>
+    
     
     <div class="row mt-3">
         <div class="col text-center">

@@ -1,22 +1,23 @@
 <div class="row mb-1 mr-0 custom-border">
-    <div class="col-md-1 custom-border-right p-1 text-center mb-1 mt-1 ">
-      <img [src]=" 'assets/fournisseur.png'" width="100px" height="100px">
-    </div>
+  <div class="col-md-1 custom-border-right p-1 text-center mb-1 mt-1 ">
+    <img [src]="FournisseurDto.photo ? 'assets/' + FournisseurDto.photo : 'assets/user.png'" class="rounded img-fluid" alt="Photo FournisseurDto">
+
+  </div >
   
     <!--  Details clients-->
     <div class="col-md-5 custom-border-right mb-1 mt-1 ">
       <div class="col">
         <div class="row">
           <div class="col-md-1"><i class="fas fa-info-circle blue-color"></i></div>
-          <div class="col-md-10">nom </div>
+          <div class="col-md-10">{{ FournisseurDto.nom }} </div>
         </div>
         <div class="row">
           <div class="col-md-1"><i class="fas fa-info-circle blue-color"></i></div>
-          <div class="col-md-10">prenom</div>
+          <div class="col-md-10">{{ FournisseurDto.prenom }}</div>
         </div>
         <div class="row">
           <div class="col-md-1"><i class="fas fa-phone-alt blue-color"></i></div>
-          <div class="col-md-10">numTel </div>
+          <div class="col-md-10">{{ FournisseurDto.numTel }} </div>
         </div>
       </div>
     </div>
@@ -25,15 +26,15 @@
       <div class="col">
         <div class="row">
           <div class="col-md-1"><i class="fas fa-home blue-color"></i></div>
-          <div class="col-md-10">&nbsp;adresse1 &nbsp;&nbsp;adresse2 </div>
+          <div class="col-md-10">{{ FournisseurDto.adresse?.adresse1 }} &nbsp;&nbsp;{{ FournisseurDto.adresse?.adresse2 }}  </div>
         </div>
         <div class="row">
           <div class="col-md-1"><i class="fas fa-map-marker-alt blue-color"></i></div>
-          <div class="col-md-10">codePostale &nbsp;&nbsp;ville </div>
+          <div class="col-md-10">{{ FournisseurDto.adresse?.codePostale }} &nbsp;&nbsp;{{ FournisseurDto.adresse?.ville }}</div>
         </div>
         <div class="row">
           <div class="col-md-1"><i class="fas fa-globe-europe blue-color"></i></div>
-          <div class="col-md-10">&nbsp;pays </div>
+          <div class="col-md-10">{{ FournisseurDto.adresse?.pays }} </div>
         </div>
       </div>
     </div>
@@ -42,17 +43,17 @@
     <div class="col-md-3 mb-1 mt-1 ">
       <div class="row">
         <div class="col-md-4">
-          <button type="button" class="btn btn-link" >
+          <button type="button" class="btn btn-link" (click)="modifierFournisseur()" >
             <i class="fas fa-pencil-alt"></i>&nbsp;Modifier
           </button>
         </div>
         <div class="col-md-4">
-          <button type="button" class="btn btn-link text-danger" data-toggle="modal" >
+          <button type="button" class="btn btn-link text-danger" data-toggle="modal"  (click)="confirmerEtSupprimerFournisseur()">
             <i class="fas fa-trash-alt"></i>&nbsp;Supprimer
           </button>
         </div>
         <div class="col-md-4">
-          <button type="button" class="btn btn-link ">
+          <button type="button" class="btn btn-link "  (click)="AfficherDetailsSupplimentaire()">
             <i class="far fa-list-alt"></i>&nbsp;Details
           </button>
         </div>
@@ -72,7 +73,7 @@
             </button>
           </div>
           <div class="modal-body">
-            Etes vous-sur de vouloir supprimer ce origin ?
+            Etes vous-sur de vouloir supprimer ce fournisseur ?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">

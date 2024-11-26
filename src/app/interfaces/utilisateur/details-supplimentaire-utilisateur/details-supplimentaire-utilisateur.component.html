@@ -1,0 +1,33 @@
+<h3 *ngIf="UtilisateurDto" class="text-center mb-4">
+    <i>Détails Supplémentaires de {{ UtilisateurDto.prenom }} {{ UtilisateurDto.nom }}</i>
+  </h3>
+  
+  <div *ngIf="UtilisateurDto; else loading" class="row mb-4">
+    <!-- Image utilisateur -->
+    <div class="col-md-3 text-center">
+      <img [src]="UtilisateurDto.photo ? 'assets/' + UtilisateurDto.photo : 'assets/logo.png'" 
+           class="img-fluid rounded-circle border border-3" 
+           alt="Photo Utilisateur">
+    </div>
+  
+    <!-- Détails utilisateur -->
+    <div class="col-md-9">
+      <div class="client-details">
+        <p><strong>Nom :</strong> {{ UtilisateurDto.nom }}</p>
+        <p><strong>Prénom :</strong> {{ UtilisateurDto.prenom }}</p>
+        <p><strong>Adresse :</strong> {{ UtilisateurDto.adresse?.adresse1 }} {{ UtilisateurDto.adresse?.adresse2 }}</p>
+        <p><strong>Ville :</strong> {{ UtilisateurDto.adresse?.ville }}</p>
+        <p><strong>Pays :</strong> {{ UtilisateurDto.adresse?.pays }}</p>
+        <p><strong>Email :</strong> {{ UtilisateurDto.email }}</p>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #loading>
+    <p>Chargement des détails de l'utilisateur...</p>
+  </ng-template>
+  
+  <div class="text-center">
+    <button (click)="goBack()" class="btn btn-primary">Retour</button>
+  </div>
+  

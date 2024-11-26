@@ -1,0 +1,61 @@
+.card {
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.custom-border-right {
+  border-right: 1px solid #eee;
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.icon-small {
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000000;
+}
+
+.text-primary {
+  color: #007bff;
+}
+
+.card-body p {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.btn-group .btn {
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.btn-outline-info, .btn-outline-danger, .btn-outline-warning {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-outline-info:hover {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-outline-warning:hover {
+  background-color: #ffc107;
+  color: black;
+}

@@ -15,8 +15,10 @@
             <div class="alert alert-danger" *ngIf="errorMsg">
                 {{ errorMsg }}
               </div>
-            <app-details-clients *ngFor="let client of listClient" ></app-details-clients>
+              <app-details-clients *ngFor="let client of listClient" [ClientDto]="client" (suppressionResult)="handleSuppression($event)"></app-details-clients>
+
         </div>
+
     </div>
 
     <div class="row mt-3">

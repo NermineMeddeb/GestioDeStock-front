@@ -21,20 +21,25 @@ import { NouvelleCommandeFournisseurComponent } from './interfaces/commande-four
 import { CategoriesComponent } from './interfaces/categories/categories.component';
 import { NouvelleCategorieComponent } from './interfaces/categories/nouvelle-categorie/nouvelle-categorie.component';
 import { UtilisateurComponent } from './interfaces/utilisateur/utilisateur.component';
+
 import { ProfilComponent } from './interfaces/profil/profil.component';
-import { ChangerLePwdComponent } from './interfaces/profil/changer-le-pwd/changer-le-pwd.component';
+import { ChangerMotDePasseComponent } from './interfaces/profil/changer-le-pwd/changer-le-pwd.component';
+import { DetailsSupplimentaireClientComponent } from './interfaces/clients/details-supplimentaire-client/details-supplimentaire-client.component';
+import { DetailsSupplimentaireFournisseurComponent } from './interfaces/fournisseurs/details-supplimentaire-fournisseur/details-supplimentaire-fournisseur.component';
+import { NouveauUtilisateurComponent } from './interfaces/utilisateur/nouveau-utilisateur/nouveau-utilisateur.component';
+import { DetailsSupplimentaireUtilisateurComponent } from './interfaces/utilisateur/details-supplimentaire-utilisateur/details-supplimentaire-utilisateur.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashbord/articles', pathMatch: 'full' }, // Redirection par défaut vers la page de dashbord
   { path: 'login', component: LoginComponent },
   { path: 'sign-in', component: SignInComponent },
-  { 
-    path: 'dashbord', 
+  {
+    path: 'dashbord',
     component: DashbordComponent,
     children: [
       { path: 'statistiques', component: StatistiquesComponent },
       { path: 'articles', component: ArticlesComponent },
-      { path: 'nouveau-article', component: NouveauArticleComponent },///////////
+      { path: 'nouveau-article', component: NouveauArticleComponent }, ///////////
       { path: 'nouveau-article/:id', component: NouveauArticleComponent },
 
       { path: 'mouvement-de-stock', component: MouvementDeStockComponent },
@@ -43,27 +48,54 @@ const routes: Routes = [
 
       { path: 'fournisseurs', component: FournisseursComponent },
 
-      { path: 'commande-fournisseur', component: CommandeFournisseurComponent},
+      { path: 'commande-fournisseur', component: CommandeFournisseurComponent },
       { path: 'commande-client', component: CommandeClientComponent },
 
       { path: 'nouveau-fournisseur', component: NouveauFournisseurComponent },
-      { path: 'nouvelle-commande-client', component: NouvelleCommandeClientComponent },
-      { path: 'nouvelle-commande-fournisseur', component: NouvelleCommandeFournisseurComponent },
+      {
+        path: 'nouvelle-commande-client',
+        component: NouvelleCommandeClientComponent,
+      },
+      {
+        path: 'nouvelle-commande-client/:idCommande',
+        component: NouvelleCommandeClientComponent,
+      },
+
+      {
+        path: 'nouvelle-commande-fournisseur',
+        component: NouvelleCommandeFournisseurComponent,
+      },
 
       { path: 'categories', component: CategoriesComponent },
       { path: 'nouvelle-categorie', component: NouvelleCategorieComponent },
       { path: 'utilisateur', component: UtilisateurComponent },
-      { path: 'profil', component: ProfilComponent },
-      { path: 'changer-le-pwd', component: ChangerLePwdComponent },
+      { path: 'nouveau-utilisateur', component: NouveauUtilisateurComponent }, //
+      {
+        path: 'nouveau-utilisateur/:id',
+        component: NouveauUtilisateurComponent,
+      },
 
-      { path: '', redirectTo: 'commande-clientt', pathMatch: 'full' } // Redirection par défaut
-    ]
+      { path: 'profil', component: ProfilComponent },
+      { path: 'changer-le-pwd', component: ChangerMotDePasseComponent },
+      {
+        path: 'clients/DetailsSupplimentaireClient',
+        component: DetailsSupplimentaireClientComponent,
+      },
+      {
+        path: 'fournisseurs/details-supplimentaire-fournisseur',
+        component: DetailsSupplimentaireFournisseurComponent,
+      },
+      {
+        path: 'utilisateur/details-supplimentaire-utilisateur',
+        component: DetailsSupplimentaireUtilisateurComponent,
+      },
+      { path: '', redirectTo: 'profil', pathMatch: 'full' }, // Redirection par défaut
+    ],
   },
 ];
 
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

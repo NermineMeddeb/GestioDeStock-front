@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CommandeFournisseurDto } from 'src/gs-api/src/models';
 
 @Component({
   selector: 'app-details-commande-client-fournisseur',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./details-commande-client-fournisseur.component.css']
 })
 export class DetailsCommandeClientFournisseurComponent implements OnInit {
-
+  @Input() commandefournisseur!: CommandeFournisseurDto;
+  commande: any = {};
   constructor() { }
 
   ngOnInit(): void {

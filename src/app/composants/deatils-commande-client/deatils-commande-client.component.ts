@@ -7,14 +7,12 @@ import { CommandeClientDto } from 'src/gs-api/src/models';
   styleUrls: ['./deatils-commande-client.component.css']
 })
 export class DeatilsCommandeClientComponent implements OnInit {
-  @Input() cmdclt!: CommandeClientDto;
+  @Input() commandeClient!: CommandeClientDto;
   commande: any = {};
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-  modifierClick() {
-    // Logic pour modifier l'élément
-  }
+    console.log('CommandeClientDto:', this.commandeClient);  }
+  
 }

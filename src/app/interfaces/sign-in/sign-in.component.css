@@ -1,43 +1,116 @@
-/* Applique une marge supérieure de 100px et limite la largeur maximale du conteneur à 600px */
+/* Arrière-plan avec bulles inspirées du logo */
+body {
+    background: linear-gradient(to right, #87E0FF, #38B6FF);
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Bulles dynamiques en arrière-plan */
+.my-container::before {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(56, 182, 255, 0.4);
+    border-radius: 50%;
+    top: -50px;
+    left: -80px;
+    z-index: -1;
+    animation: float 6s infinite ease-in-out;
+}
+
+.my-container::after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: rgba(0, 61, 115, 0.2);
+    border-radius: 50%;
+    bottom: -50px;
+    right: -50px;
+    z-index: -1;
+    animation: float 8s infinite ease-in-out;
+}
+
+/* Animation des bulles */
+@keyframes float {
+    0% {
+        transform: translateY(-111px);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Formulaire stylé */
 .my-container {
-    margin-top: 100px;
-    max-width: 600px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 61, 115, 0.3);
+    padding: 30px;
+    max-width: 500px;
+    margin: 5% auto;
+    position: relative;
+    z-index: 10;
 }
 
-/* Ajoute un rayon de bordure de 10px aux coins de la carte pour les arrondir */
-.card {
+/* Champs de formulaire */
+.my-container .form-control {
+    border: 2px solid #38B6FF;
     border-radius: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
 }
 
-/* Ajoute une bordure inférieure à l'en-tête de la carte pour créer une séparation visuelle */
-.card-header {
-    border-bottom: 1px solid #dee2e6;
+.my-container .form-control:focus {
+    border-color: #003D73;
+    box-shadow: 0 0 5px rgba(56, 182, 255, 0.7);
 }
 
-/* Rend le texte des étiquettes (labels) en gras pour une meilleure lisibilité */
-.form-label {
+/* Boutons stylés */
+.custom-button {
+    background: linear-gradient(to right, #003D73, #38B6FF);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
     font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Style appliqué à un champ de formulaire lorsqu'il est en focus 
-   Change la couleur de la bordure et ajoute une ombre autour du champ */
-.form-control:focus {
-    border-color: #007bff; /* Couleur de bordure bleue lors du focus */
-    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25); /* Ombre autour du champ */
+.custom-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 61, 115, 0.3);
 }
 
-/* Style des liens boutons (btn-link), ici avec une couleur bleue par défaut */
-.btn-link {
-    color: #007bff;
+/* Liens personnalisés */
+.custom-link {
+    color: #38B6FF;
+    text-decoration: none;
+    font-size: 0.9rem;
 }
 
-/* Change la couleur du lien bouton lorsqu'on passe la souris dessus */
-.btn-link:hover {
-    color: #0056b3;
+.custom-link:hover {
+    text-decoration: underline;
 }
 
-/* Applique un rayon de bordure de 5px aux boutons de type "primary" 
-   pour les rendre légèrement arrondis */
-.btn-primary {
-    border-radius: 5px;
+/* Titres */
+h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #003D73;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+p {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 20px;
 }

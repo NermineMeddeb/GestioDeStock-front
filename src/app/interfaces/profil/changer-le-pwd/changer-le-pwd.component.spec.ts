@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChangerLePwdComponent } from './changer-le-pwd.component';
+import { ChangerMotDePasseComponent } from './changer-le-pwd.component';
 
 describe('ChangerLePwdComponent', () => {
-  let component: ChangerLePwdComponent;
-  let fixture: ComponentFixture<ChangerLePwdComponent>;
+  let component: ChangerMotDePasseComponent;
+  let fixture: ComponentFixture<ChangerMotDePasseComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChangerLePwdComponent ]
+      declarations: [ ChangerMotDePasseComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ChangerLePwdComponent);
+    fixture = TestBed.createComponent(ChangerMotDePasseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

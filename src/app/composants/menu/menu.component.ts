@@ -11,26 +11,7 @@ export class MenuComponent implements OnInit {
 
   // Propriétés du menu définies avec un tableau d'objets Menu
   public menuProperties: Array<Menu> = [
-    {
-      id: '1',
-      titre: 'Tableau de bord',
-      icon: 'fas fa-chart-line',
-      url: '',
-        sousMenu: [
-         {
-                   id: '11',
-                   titre: 'Vue d\'ensemble',
-                   icon: 'fas fa-chart-pie',
-                    url: 'dashbord'
-        },
-        {
-                    id: '12',
-                    titre: 'Statistiques',
-                     icon: 'fas fa-chart-bar',
-                    url: 'statistiques'
-        }
-      ]
-    },
+  
     {
       id: '2',
       titre: 'Articles',
@@ -43,12 +24,7 @@ export class MenuComponent implements OnInit {
           icon: 'fas fa-boxes',
           url: 'articles'
         },
-        {
-          id: '22',
-          titre: 'Mouvements du stock',
-          icon: 'fab fa-stack-overflow',
-          url: 'mouvement-de-stock'
-        }
+      
       ]
     },
     {

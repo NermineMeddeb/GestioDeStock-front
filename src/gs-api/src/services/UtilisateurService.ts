@@ -8,7 +8,7 @@ import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
 import { UtilisateurDto } from '../models/utilisateur-dto';
-//import { ChangerMotDePasseUtilisateurDto } from '../models/changer-mot-de-passe-utilisateur-dto';
+import { ChangerMotDePasseUtilisateurDto } from '../models/ChangerMotDePasseUtilisateurDto';
 @Injectable({
   providedIn: 'root',
 })
@@ -170,7 +170,7 @@ class UtilisateursService extends __BaseService {
    * @param body undefined
    * @return successful operation
    */
-  /*changerMotDePasseResponse(body?: ChangerMotDePasseUtilisateurDto): __Observable<__StrictHttpResponse<UtilisateurDto>> {
+  changerMotDePasseResponse(body?: ChangerMotDePasseUtilisateurDto): __Observable<__StrictHttpResponse<UtilisateurDto>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -192,16 +192,15 @@ class UtilisateursService extends __BaseService {
       })
     );
   }
-  /**
-   * @param body undefined
-   * @return successful operation
+  
+  
   //       decomentiha men ba3ed
   changerMotDePasse(body?: ChangerMotDePasseUtilisateurDto): __Observable<UtilisateurDto> {
     return this.changerMotDePasseResponse(body).pipe(
       __map(_r => _r.body as UtilisateurDto)
     );
   }
-*/
+
   /**
    * @param idUtilisateur undefined
    * @return successful operation
@@ -237,6 +236,7 @@ class UtilisateursService extends __BaseService {
       __map(_r => _r.body as UtilisateurDto)
     );
   }
+  
 }
 
 module UtilisateursService {

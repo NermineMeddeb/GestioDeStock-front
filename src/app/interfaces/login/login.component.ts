@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // tslint:disable-next-line:typedef
   login() {
     this.userService.login(this.authenticationRequest).subscribe(
       (data) => {

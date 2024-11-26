@@ -1,74 +1,89 @@
+/* Assurez-vous que le body prend toute la hauteur de la fenêtre */
 body {
-    font-family: Arial, sans-serif;
+    min-height: 100vh; /* Minimum hauteur = hauteur de la fenêtre */
+    display: flex;
+    flex-direction: column;
 }
 
-.sidebar {
-    background-color: #f8f9fa;
-    min-height: 100vh;
-    padding: 15px;
-}
-
-.sidebar h5 {
-    margin-bottom: 20px;
-}
-
-.sidebar .nav-link {
-    padding: 10px;
-    margin-bottom: 10px;
-    color: #495057;
-}
-
-.sidebar .nav-link:hover {
-    background-color: #e9ecef;
-}
-
+/* La partie principale de la page */
 .content {
+    flex-grow: 1; /* Le contenu occupe tout l'espace disponible */
     padding: 20px;
     background-color: #ffffff;
     border: 1px solid #dee2e6;
     border-radius: 5px;
 }
 
-.content h4 {
-    margin-bottom: 20px;
+/* Footer */
+.footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #6c757d;
+    border-top: 2px solid #dee2e6;
+    margin-top: auto; /* Cette propriété pousse le footer vers le bas */
 }
 
-.footer {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 12px;
+/* Contenu du footer */
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.footer-left {
+    font-size: 14px;
     color: #6c757d;
 }
 
-.chart, .pie-chart {
-    background-color: #f8f9fa;
-    height: 150px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #dee2e6;
+.footer-right {
+    font-size: 14px;
 }
 
-.header {
-    background-color: #f8f9fa;
-    padding: 15px;
-    border-radius: 5px;
-    border: 1px solid #dee2e6;
+.footer-links {
+    margin-bottom: 0;
 }
 
-.search-bar {
+.footer-links a {
+    color: #4b74e0;
+    text-decoration: none;
+    padding: 0 10px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #007bff;
+}
+
+.footer .footer-right .list-inline-item {
     margin-right: 15px;
-    flex-grow: 1;
 }
 
-.user-info {
+.footer .footer-right .list-inline-item:last-child {
+    margin-right: 0;
+}
+
+.footer .footer-left,
+.footer .footer-right {
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
-.user-info img {
-    border-radius: 50%;
+.footer .footer-left span {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.footer .footer-right a {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.footer .footer-right a:hover {
+    color: #0056b3;
 }

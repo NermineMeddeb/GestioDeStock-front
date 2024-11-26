@@ -1,1 +1,50 @@
-<p>statistiques works!</p>
+<div class="dashboard">
+  <!-- Statistiques Globales -->
+  <div class="card">
+    <h3>Articles</h3>
+    <p *ngIf="!loading">{{ articlesCount }} articles</p>
+    <p *ngIf="loading">Chargement...</p>
+  </div>
+
+  <div class="card">
+    <h3>Commandes Clients</h3>
+    <p *ngIf="!loading">{{ commandesClientsCount }} commandes</p>
+    <p *ngIf="loading">Chargement...</p>
+  </div>
+
+  <div class="card">
+    <h3>Commandes Fournisseurs</h3>
+    <p *ngIf="!loading">{{ commandesFournisseursCount }} commandes</p>
+    <p *ngIf="loading">Chargement...</p>
+  </div>
+
+  <div class="card">
+    <h3>Stock Positif</h3>
+    <p *ngIf="!loading">{{ stockPositif }} unités</p>
+    <p *ngIf="loading">Chargement...</p>
+  </div>
+
+  <div class="card">
+    <h3>Stock Négatif</h3>
+    <p *ngIf="!loading">{{ stockNegatif }} unités</p>
+    <p *ngIf="loading">Chargement...</p>
+  </div>
+
+  <!-- Graphique des statistiques -->
+  <div class="chart-container">
+    <ngx-charts-bar-vertical
+      *ngIf="!loading"
+      [results]="singleData"
+      [xAxis]="true"
+      [yAxis]="true"
+      [legend]="false"
+      [showDataLabel]="true">
+    </ngx-charts-bar-vertical>
+    <p *ngIf="loading">Chargement du graphique...</p>
+  </div>
+
+  <!-- Gestion des erreurs -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+</div>

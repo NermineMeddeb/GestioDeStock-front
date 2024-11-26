@@ -4,27 +4,44 @@
       <h3>Se connecter</h3>
     </div>
     <div class="card-body">
-      <form>  
-        <div class="alert alert-danger" *ngIf="errorMessage" style="margin-top: 10px;">
-          {{errorMessage}}
+      <form>
+        <div
+          class="alert alert-danger"
+          *ngIf="errorMessage"
+          style="margin-top: 10px"
+        >
+          {{ errorMessage }}
         </div>
-        
+
         <div class="mb-3">
-          <input type="email" class="form-control" placeholder="E-mail" [(ngModel)] = "authenticationRequest.login"
-          name="email" required >
+          <input
+            type="email"
+            class="form-control"
+            placeholder="E-mail"
+            [(ngModel)]="authenticationRequest.login"
+            name="email"
+            required
+          />
           <div class="invalid-feedback">
             Veuillez entrer une adresse e-mail valide.
           </div>
         </div>
         <div class="mb-3">
-          <input type="password" class="form-control" placeholder="Mot de passe"
-          name="password" [(ngModel)] = "authenticationRequest.password" required>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Mot de passe"
+            name="password"
+            [(ngModel)]="authenticationRequest.password"
+            required
+          />
           <div class="invalid-feedback">
             Veuillez entrer votre mot de passe.
           </div>
         </div>
         <div class="mb-3 d-flex justify-content-between align-items-center">
           <a [routerLink]="['/sign-in']" class="btn btn-link">S'inscrire</a>
+
           <button type="submit" class="btn btn-info" (click)="login()">
             <i class="fas fa-sign-in-alt"></i> Se connecter
           </button>

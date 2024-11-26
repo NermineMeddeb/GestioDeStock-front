@@ -58,6 +58,10 @@ export class CommandeClientComponent implements OnInit {
       goToNouvelleCommande(): void {
         this.router.navigate(['/dashbord/nouvelle-commande-client']); // Redirige vers l'URL /nouvelle-commande-client
       }
+     modifierCommandeClient(idCommande: number): void {
+        this.router.navigate(['/dashbord/nouvelle-commande-client', idCommande]);
+      }
+      
     }
   
     

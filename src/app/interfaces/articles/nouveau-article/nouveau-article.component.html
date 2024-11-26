@@ -1,7 +1,8 @@
 <div class="col mb-3">
   <div class="col-md-12 mb-3 mt-3">
-    <button style="background-color: transparent; border: none;">
-      <img src="assets/utilisateur.png" class="rounded-circle" width="200px" height="200px" />
+    <button (click)="fileInput.click()" style="background-color: transparent; border: none;">
+      <img [src]="imgUrl" width="200px" height="200px" />
+      <input hidden type="file" #fileInput (change)="onFileInput(fileInput.files)">
     </button>
   </div>
   <hr>
@@ -37,10 +38,10 @@
         </div>
         <div class="row mb-3">
           <div class="col">
-            <input type="text" class="form-control" name="prixunitttc" placeholder="Prix unitaire TTC" [(ngModel)]="articleDto.prixUnitaireTtc"(input)="calculerTTC()">
+            <input type="text" class="form-control" name="prixunitttc" placeholder="Prix unitaire TTC" [(ngModel)]="articleDto.prixUnitaireTtc" (input)="calculerTTC()">
           </div>
           <div class="col">
-            <select class="form-control" name="cat" [(ngModel)]="categorieDto.id">
+            <select class="form-control" name="cat" [(ngModel)]="articleDto.categoryId">
               <option [value]="null">Sélectionner une catégorie</option>
               <option *ngFor="let cat of listeCategorie" [value]="cat.id">{{ cat.code }} - {{ cat.designation }}</option>
             </select>

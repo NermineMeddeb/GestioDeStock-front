@@ -5,8 +5,8 @@ import {UtilisateursService} from "../../../gs-api/src/services/UtilisateurServi
 
 @Component({
   selector: 'app-utilisateur',
-  templateUrl: './utilisateur.component.html',
-  styleUrls: ['./utilisateur.component.css']
+  templateUrl: './Utilisateur.component.html',
+  styleUrls: ['./Utilisateur.component.css']
 })
 export class UtilisateurComponent implements OnInit {
 
@@ -15,12 +15,13 @@ export class UtilisateurComponent implements OnInit {
   constructor(private service: UtilisateursService, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
+    
     this.service.findAll().subscribe(
       data => {
         this.UtilisateurDto = data;
         console.log('Données récupérées:', this.UtilisateurDto);
       },
-      error => console.error('Erreur lors de la récupération des détails de l\'article', error)
+      error => console.error('Erreur lors de la récupération des détails de l\'utulisateur', error)
     );
   }
   nouvelleUtilisateur(): void {

@@ -1,47 +1,116 @@
+/* Arrière-plan avec bulles inspirées du logo */
+body {
+  background: linear-gradient(to right, #87e0ff, #38b6ff);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Bulles dynamiques en arrière-plan */
+.my-container::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: rgba(56, 182, 255, 0.4);
+  border-radius: 50%;
+  top: -50px;
+  left: -80px;
+  z-index: -1;
+  animation: float 6s infinite ease-in-out;
+}
+
+.my-container::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: rgba(0, 61, 115, 0.2);
+  border-radius: 50%;
+  bottom: -50px;
+  right: -50px;
+  z-index: -1;
+  animation: float 8s infinite ease-in-out;
+}
+
+/* Animation des bulles */
+@keyframes float {
+  0% {
+    transform: translateY(-111px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Formulaire stylé */
 .my-container {
-  margin-top: 100px;
-  max-width: 400px;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 61, 115, 0.3);
+  padding: 30px;
+  max-width: 500px;
+  margin: 5% auto;
+  position: relative;
+  z-index: 10;
 }
 
-.card {
-  border-radius: 8px;
+/* Champs de formulaire */
+.my-container .form-control {
+  border: 2px solid #38b6ff;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.my-container .form-control:focus {
+  border-color: #003d73;
+  box-shadow: 0 0 5px rgba(56, 182, 255, 0.7);
+}
+
+/* Boutons stylés */
+.custom-button {
+  background: linear-gradient(to right, #003d73, #38b6ff);
+  color: #fff;
   border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card-header {
-  border-radius: 8px 8px 0 0;
+.custom-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 61, 115, 0.3);
 }
 
-.form-control:focus {
-  border-color: #17a2b8;
-  box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.25);
-}
-
-.btn-info {
-  background-color: #17a2b8;
-  border-color: #17a2b8;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.btn-info:hover {
-  background-color: #138496;
-  transform: translateY(-2px);
-}
-
-.btn-link {
-  color: #17a2b8;
-  transition: color 0.3s;
-}
-
-.btn-link:hover {
-  color: #138496;
+/* Liens personnalisés */
+.custom-link {
+  color: #38b6ff;
   text-decoration: none;
+  font-size: 0.9rem;
 }
 
-.invalid-feedback {
-  display: none;
+.custom-link:hover {
+  text-decoration: underline;
 }
 
-input:invalid + .invalid-feedback {
-  display: block;
+/* Titres */
+h2 {
+  font-family: "Poppins", sans-serif;
+  color: #003d73;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+p {
+  font-family: "Arial", sans-serif;
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 20px;
 }

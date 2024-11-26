@@ -26,7 +26,7 @@ export class ArticleService {
 
   findArticleById(idArticle?: number): Observable<ArticleDto> {
     if (idArticle) {
-      return this.articleService.findById(idArticle);
+      return this.articleService.findByIdArticle(idArticle);
     }
     return of();
   }

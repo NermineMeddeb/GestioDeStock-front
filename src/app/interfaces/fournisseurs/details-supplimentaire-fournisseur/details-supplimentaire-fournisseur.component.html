@@ -1,0 +1,72 @@
+<div class="client-details-card card shadow-sm p-4">
+    <h3 class="text-center mb-4">
+      <i>Détails Supplémentaires du {{ FournisseurDto.prenom }} {{ FournisseurDto.nom }}</i>
+    </h3>
+    
+    <div class="row mb-4">
+      <!-- Section de l'image -->
+      <div class="col-md-3 text-center">
+        <div class="img-container">
+          <!-- Utilisation d'une photo du fournisseur avec une image par défaut si aucune photo n'est disponible -->
+          <img [src]="FournisseurDto.photo ? 'assets/' + FournisseurDto.photo : 'assets/produit.png'" 
+               class="img-fluid rounded-circle border border-3" alt="Photo FournisseurDto">
+        </div>
+      </div>
+  
+      <!-- Détails du fournisseur -->
+      <div class="col-md-9">
+        <div class="client-details">
+          <!-- Affichage des informations sur le fournisseur -->
+          <div class="detail-item mb-3">
+            <strong>Nom :</strong> <span>{{ FournisseurDto.nom }}</span>
+          </div>
+  
+          <div class="detail-item mb-3">
+            <strong>Prénom :</strong> <span>{{ FournisseurDto.prenom }}</span>
+          </div>
+  
+          <div class="detail-item mb-3">
+            <strong>Adresse :</strong> 
+            <span>{{ FournisseurDto.adresse?.adresse1 }} {{ FournisseurDto.adresse?.adresse2 }}</span>
+          </div>
+  
+          <div class="detail-item mb-3">
+            <strong>Ville :</strong> <span>{{ FournisseurDto.adresse?.ville }}</span>
+          </div>
+  
+          <div class="detail-item mb-3">
+            <strong>Pays :</strong> <span>{{ FournisseurDto.adresse?.pays }}</span>
+          </div>
+  
+          <div class="detail-item mb-3">
+            <strong>Code Postal :</strong> <span>{{ FournisseurDto.adresse?.codePostale }}</span>
+          </div>
+  
+          <div class="detail-item mb-3">
+            <strong>Téléphone :</strong> <span>{{ FournisseurDto.numTel }}</span>
+          </div>
+  
+          <div class="detail-item mb-3">
+            <strong>Email :</strong> <span>{{ FournisseurDto.mail }}</span>
+          </div>
+  
+          <div class="detail-item mb-3">
+            <strong>ID :</strong> <span>{{ FournisseurDto.id }}</span>
+          </div>
+  
+          <div class="detail-item mb-3">
+            <strong>ID Entreprise :</strong> <span>{{ FournisseurDto.idEntreprise }}</span>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  
+    <!-- Bouton retour -->
+    <div class="text-center">
+      <button (click)="goBack()" class="btn btn-primary btn-lg shadow-sm">
+        Retour
+      </button>
+    </div>
+  </div>
+  

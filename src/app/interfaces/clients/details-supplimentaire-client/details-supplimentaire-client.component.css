@@ -1,0 +1,115 @@
+/* Cartes avec ombre et coins arrondis */
+.client-details-card {
+  background-color: #ffffff; /* Fond blanc pour la carte */
+  border-radius: 12px; /* Coins arrondis de la carte */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  padding: 20px;
+  margin: 20px;
+  transition: all 0.3s ease; /* Effet de transition */
+}
+
+/* Hover sur la carte */
+.client-details-card:hover {
+  transform: translateY(-5px); /* Légère élévation de la carte au survol */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
+}
+
+
+
+
+
+
+
+/* Détails du client */
+.client-details {
+  margin-left: 20px;
+}
+
+.client-details .detail-item {
+  font-size: 1.2em;
+  line-height: 1.5; /* Espacement entre les lignes */
+  margin-bottom: 15px;
+  color: #000000; /* Couleur de texte */
+}
+
+/* Détail avec une mise en forme particulière */
+.client-details .detail-item strong {
+  color: #032142; /* Couleur bleue pour les labels */
+  font-weight: 600;
+}
+
+/* Espacement pour le titre */
+h3 {
+  font-size: 1.8em;
+  color: #032142;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* Style du bouton retour */
+button.btn {
+  background-color: #0056b3; /* Bleu principal */
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px; /* Coins arrondis */
+  font-size: 1.1em;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Effet hover sur le bouton */
+button.btn:hover {
+  background-color: #99c6f7; /* Couleur plus foncée au survol */
+  transform: scale(1.05); /* Effet de zoom */
+}
+
+/* Centrer le bouton retour */
+.text-center {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+/* Style pour les commandes du client */
+.client-details .detail-item ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.client-details .detail-item ul li {
+  margin-bottom: 10px;
+}
+
+.client-details .detail-item ul li strong {
+  color: #007bff;
+}
+
+
+/* Section responsive pour les petits écrans */
+@media (max-width: 768px) {
+  .client-details-card {
+    padding: 15px;
+    margin: 15px;
+  }
+
+  .client-details {
+    margin-left: 0;
+  }
+
+  .img-container {
+    max-width: 120px;
+  }
+
+  h3 {
+    font-size: 1.5em;
+  }
+
+  .client-details .detail-item {
+    font-size: 1.1em;
+  }
+
+  button.btn {
+    font-size: 1em;
+    padding: 10px 18px;
+  }
+}

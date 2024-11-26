@@ -22,11 +22,24 @@ export class ClientsComponent implements OnInit {
 
   findAllClients(): void {
     this.cltService.findAll_client()
-    .subscribe(clients => {
-      this.listClient = clients;
-    });
+      .subscribe(
+        clients => {
+          this.listClient = clients;
+        },
+        error => {
+          this.errorMsg = 'Erreur lors de la récupération des clients.';
+          console.error(error);
+        }
+      );
   }
   goToNouveauClient(): void {
+    console.log('Navigating to nouveau-client');
     this.router.navigate(['/dashbord/nouveau-client']); // Redirige vers l'URL /nouvelle-commande
   }
+  handleSuppression(event: any): void {
+    if (event === 'success') {
+      this.findAllClients();
+    } else {
+      this.errorMsg = event;
+    }}
 }

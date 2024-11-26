@@ -57,10 +57,10 @@ class ApiService extends __BaseService {
   static readonly saveEntreprisePath = '/gestiondestock/v1/entreprises/create';
   static readonly deleteEntreprisePath = '/gestiondestock/v1/entreprises/delete/{idEntreprise}';
   static readonly findEntrepriseByIdPath = '/gestiondestock/v1/entreprises/{idEntreprise}';
-  static readonly findAll_1Path = '/gestiondestock/v1/fournisseurs/all';
+  static readonly findAllFournisseurPath = '/gestiondestock/v1/fournisseurs/all';
   static readonly savePath = '/gestiondestock/v1/fournisseurs/create';
   static readonly deletePath = '/gestiondestock/v1/fournisseurs/delete/{idFournisseur}';
-  static readonly findByIdPath = '/gestiondestock/v1/fournisseurs/{idFournisseur}';
+  static readonly findByIdFournisseurPath = '/gestiondestock/v1/fournisseurs/{idFournisseur}';
   static readonly correctionStockNegPath = '/gestiondestock/v1/mvtstk/correctionneg';
   static readonly correctionStockPosPath = '/gestiondestock/v1/mvtstk/correctionpos';
   static readonly entreeStockPath = '/gestiondestock/v1/mvtstk/entree';
@@ -71,10 +71,10 @@ class ApiService extends __BaseService {
   static readonly delete_catPath = 'gestiondestock/v1/categories/delete/{idCategory}';
   static readonly findByCodePath = 'gestiondestock/v1/categories/filter/{codeCategory}';
   static readonly findById_1Path = 'gestiondestock/v1/categories/{idCategory}';
-  static readonly findAll_clientPath = 'gestiondestock/v1/clients/all';
-  static readonly save_2Path = 'gestiondestock/v1/clients/gestiondestock/v1/clients/create';
-  static readonly delete_2Path = 'gestiondestock/v1/clients/gestiondestock/v1/clients/delete/{idClient}';
-  static readonly findById_2Path = 'gestiondestock/v1/clients/gestiondestock/v1/clients/{idClient}';
+  static readonly findAll_clientPath = '/gestiondestock/v1/clients/all';
+  static readonly SaveClientPath = '/gestiondestock/v1/clients/create';
+  static readonly deleteClientPath = '/gestiondestock/v1/clients/delete/{idClient}';
+  static readonly findByIdClientPath = '/gestiondestock/v1/clients/{idClient}';
 
   constructor(
     config: __Configuration,
@@ -153,6 +153,7 @@ class ApiService extends __BaseService {
     return this.saveArticleResponse(ArticleDto).pipe(
       __map(_r => _r.body as ArticleDto)
     );console.log("ahla")
+    
   }
   deleteArticleResponse(idArticle:any): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
@@ -385,6 +386,8 @@ class ApiService extends __BaseService {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
+    console.log("heni fel findalllcommandclient")
+
     let req = new HttpRequest<any>(
       'GET',
       this.rootUrl + `/gestiondestock/v1/commandesclients/all`,
@@ -406,6 +409,7 @@ class ApiService extends __BaseService {
    * @return successful operation
    */
   findAllCommandeClients(): __Observable<Array<CommandeClientDto>> {
+    console.log("heni fel findalllcommandclient")
     return this.findAllCommandeClientsResponse().pipe(
       __map(_r => _r.body as Array<CommandeClientDto>)
     );
@@ -414,10 +418,15 @@ class ApiService extends __BaseService {
   /**
    * @return successful operation
    */
-  saveCommandeClientResponse(): __Observable<__StrictHttpResponse<CommandeClientDto>> {
+  saveCommandeClientResponse(commandeClient: CommandeClientDto): __Observable<__StrictHttpResponse<CommandeClientDto>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    let __body: any = null;
+    
+    // Assurez-vous que l'objet est bien structuré
+    console.log('Objet à envoyer:', commandeClient);
+
+    let __body: any = commandeClient; // S'assurer que l'objet est valide
+    
     let req = new HttpRequest<any>(
       'POST',
       this.rootUrl + `/gestiondestock/v1/commandesclients/create`,
@@ -434,12 +443,13 @@ class ApiService extends __BaseService {
         return _r as __StrictHttpResponse<CommandeClientDto>;
       })
     );
-  }
+}
+
   /**
    * @return successful operation
    */
-  saveCommandeClient(): __Observable<CommandeClientDto> {
-    return this.saveCommandeClientResponse().pipe(
+  saveCommandeClient(commandeClient: CommandeClientDto): __Observable<CommandeClientDto> {
+    return this.saveCommandeClientResponse(commandeClient).pipe(
       __map(_r => _r.body as CommandeClientDto)
     );
   }
@@ -1215,7 +1225,7 @@ class ApiService extends __BaseService {
   /**
    * @return successful operation
    */
-  findAll_1Response(): __Observable<__StrictHttpResponse<Array<FournisseurDto>>> {
+  findAllFournisseurResponse(): __Observable<__StrictHttpResponse<Array<FournisseurDto>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -1239,8 +1249,8 @@ class ApiService extends __BaseService {
   /**
    * @return successful operation
    */
-  findAll_1(): __Observable<Array<FournisseurDto>> {
-    return this.findAll_1Response().pipe(
+  findAllFournisseur(): __Observable<Array<FournisseurDto>> {
+    return this.findAllFournisseurResponse().pipe(
       __map(_r => _r.body as Array<FournisseurDto>)
     );
   }
@@ -1248,20 +1258,21 @@ class ApiService extends __BaseService {
   /**
    * @return successful operation
    */
-  saveResponse(): __Observable<__StrictHttpResponse<FournisseurDto>> {
+  saveResponse(body?: FournisseurDto): __Observable<__StrictHttpResponse<FournisseurDto>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    let __body: any = null;
+    let __body: any = body; // Passer le body correctement
     let req = new HttpRequest<any>(
       'POST',
       this.rootUrl + `/gestiondestock/v1/fournisseurs/create`,
-      __body,
+      __body, // Utilisation du body ici
       {
         headers: __headers,
         params: __params,
         responseType: 'json'
-      });
-
+      }
+    );
+  
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
@@ -1269,14 +1280,13 @@ class ApiService extends __BaseService {
       })
     );
   }
-  /**
-   * @return successful operation
-   */
-  save(): __Observable<FournisseurDto> {
-    return this.saveResponse().pipe(
+  
+  save(body?: FournisseurDto): __Observable<FournisseurDto> {
+    return this.saveResponse(body).pipe( // Passer le body ici
       __map(_r => _r.body as FournisseurDto)
     );
   }
+  
   deleteResponse(idFournisseur:any): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
@@ -1306,7 +1316,7 @@ class ApiService extends __BaseService {
   /**
    * @return successful operation
    */
-  findByIdResponse(idFournisseur:any): __Observable<__StrictHttpResponse<FournisseurDto>> {
+  findByIdFournisseurResponse(idFournisseur:any): __Observable<__StrictHttpResponse<FournisseurDto>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -1330,8 +1340,8 @@ class ApiService extends __BaseService {
   /**
    * @return successful operation
    */
-  findById(idFournisseur:any): __Observable<FournisseurDto> {
-    return this.findByIdResponse(idFournisseur).pipe(
+  findByIdFournisseur(idFournisseur:any): __Observable<FournisseurDto> {
+    return this.findByIdFournisseurResponse(idFournisseur).pipe(
       __map(_r => _r.body as FournisseurDto)
     );
   }
@@ -1715,14 +1725,14 @@ class ApiService extends __BaseService {
    * @param body undefined
    * @return successful operation
    */
-  save_2Response(body?: ClientDto): __Observable<__StrictHttpResponse<ClientDto>> {
+  SaveClientResponse(body?: ClientDto): __Observable<__StrictHttpResponse<ClientDto>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     let __body: any = null;
     __body = body;
     let req = new HttpRequest<any>(
       'POST',
-      this.rootUrl + `gestiondestock/v1/clients/gestiondestock/v1/clients/create`,
+      this.rootUrl + `/gestiondestock/v1/clients/create`,
       __body,
       {
         headers: __headers,
@@ -1741,8 +1751,8 @@ class ApiService extends __BaseService {
    * @param body undefined
    * @return successful operation
    */
-  save_2(body?: ClientDto): __Observable<ClientDto> {
-    return this.save_2Response(body).pipe(
+  SaveClient(body?: ClientDto): __Observable<ClientDto> {
+    return this.SaveClientResponse(body).pipe(
       __map(_r => _r.body as ClientDto)
     );
   }
@@ -1750,14 +1760,14 @@ class ApiService extends __BaseService {
   /**
    * @param idClient undefined
    */
-  delete_2Response(idClient: number): __Observable<__StrictHttpResponse<null>> {
+  deleteClientResponse(idClient: number): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
     let req = new HttpRequest<any>(
       'DELETE',
-      this.rootUrl + `gestiondestock/v1/clients/gestiondestock/v1/clients/delete/${encodeURIComponent(String(idClient))}`,
+      this.rootUrl + `/gestiondestock/v1/clients/delete/${encodeURIComponent(String(idClient))}`,
       __body,
       {
         headers: __headers,
@@ -1775,8 +1785,8 @@ class ApiService extends __BaseService {
   /**
    * @param idClient undefined
    */
-  delete_2(idClient: number): __Observable<null> {
-    return this.delete_2Response(idClient).pipe(
+  deleteClient(idClient: number): __Observable<null> {
+    return this.deleteClientResponse(idClient).pipe(
       __map(_r => _r.body as null)
     );
   }
@@ -1784,13 +1794,13 @@ class ApiService extends __BaseService {
   /**
    * @return successful operation
    */
-  findById_2Response(idClient:any): __Observable<__StrictHttpResponse<ClientDto>> {
+  findByIdClientResponse(idClient:any): __Observable<__StrictHttpResponse<ClientDto>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `gestiondestock/v1/clients/gestiondestock/v1/clients/${encodeURIComponent(String(idClient))}`,
+      this.rootUrl + `/gestiondestock/v1/clients/${encodeURIComponent(String(idClient))}`,
       __body,
       {
         headers: __headers,
@@ -1808,8 +1818,8 @@ class ApiService extends __BaseService {
   /**
    * @return successful operation
    */
-  findById_2(idClient:any): __Observable<ClientDto> {
-    return this.findById_2Response(idClient).pipe(
+  findByIdClient(idClient:any): __Observable<ClientDto> {
+    return this.findByIdClientResponse(idClient).pipe(
       __map(_r => _r.body as ClientDto)
     );
   }

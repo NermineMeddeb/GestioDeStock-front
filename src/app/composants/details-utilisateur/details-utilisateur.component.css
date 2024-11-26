@@ -1,0 +1,15 @@
+.custom-border {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .custom-border-right {
+    border-right: 1px solid #ddd;
+  }
+  
+  .blue-color {
+    color: #012040;
+  }
+  

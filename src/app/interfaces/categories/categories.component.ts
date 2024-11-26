@@ -39,10 +39,8 @@ export class CategoriesComponent implements OnInit {
     this.router.navigate(['/dashbord/nouvelle-categorie', id]);
   }
 
-  confirmerEtSupprimerCat(): void {
-    console.log("Suppression de la catégorie ID :", this.selectedCatIdToDelete);
-    if (this.selectedCatIdToDelete !== null) {
-      this.categoryService.delete_cat(this.selectedCatIdToDelete)
+  selectCatPourSupprimer(id: number=0): void {
+      this.categoryService.delete_cat(id)
       .subscribe(res => {
         console.log("Catégorie supprimée avec succès :", res);
         this.findAllCategories();
@@ -50,15 +48,10 @@ export class CategoriesComponent implements OnInit {
         console.error("Erreur lors de la suppression :", error);
         this.errorMsgs = error.error.message;
       });
-    }
+    
   }
 
-  annulerSuppressionCat(): void {
-    this.selectedCatIdToDelete = -1;
-  }
+ 
 
-  selectCatPourSupprimer(id?: number): void {
-    console.log("Catégorie sélectionnée pour suppression :", id);
-    this.selectedCatIdToDelete = id ?? null;
-  }
+
 }
